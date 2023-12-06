@@ -15,4 +15,10 @@ public class Dish
         Price = price;
         Ingredients = new List<Ingredient>();
     }
+
+    public decimal TotalCalories()
+    {
+        return Ingredients.Sum(x => x.Calories * x.Quantity);
+    }
+
 }

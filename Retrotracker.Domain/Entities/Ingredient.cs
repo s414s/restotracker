@@ -1,9 +1,9 @@
 namespace Retrotracker.Domain;
 public class Ingredient
 {
-    public string Id { get; set; }
-    public string Name { get; set; }
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
     public int Calories { get; set; }
-    public string UnitOfMeasurement { get; set; }
-    public decimal TotalQuantity { get; set; }
+    public string UnitOfMeasurement { get; set; } = string.Empty;
+    public decimal Quantity { get; set; }
 }
