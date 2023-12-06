@@ -7,4 +7,10 @@ public class Order
     public DateTime Date { get; set; }
     public int TableNumber { get; set; }
     public User Author { get; set; }
+
+    public override string ToString()
+    {
+        return $"State {State}, Table: {TableNumber}, Date: {Date}, Author: {Author}";
+    }
+
 }

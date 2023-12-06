@@ -1,5 +1,4 @@
 ﻿using Retrotracker.Domain;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
 namespace Retrotracker.DataAccess
@@ -74,7 +73,7 @@ namespace Retrotracker.DataAccess
             File.WriteAllText(_path, payloadAsString);
         }
 
-        private List<Ingredient> GetDeserializedItems()
+        private IEnumerable<Ingredient> GetDeserializedItems()
         {
             string payload = File.ReadAllText(_path);
             List<Ingredient>? deserializeItems = JsonSerializer.Deserialize<List<Ingredient>>(payload);

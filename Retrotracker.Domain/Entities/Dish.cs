@@ -19,4 +19,9 @@ public class Dish
         Price = price;
     }
 
+    public override string ToString()
+    {
+        return $"Name {Name}, Price: {Price}, Calories: {Calories}";
+    }
+
 }

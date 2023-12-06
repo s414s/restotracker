@@ -21,35 +21,72 @@ namespace Retrotracker.DataAccess
 
         public bool Delete(Dish entity)
         {
-            throw new NotImplementedException();
+            var dataEntity = new DishDataEntity().MapFromDomainEntity(entity);
+            var allDataEntities = GetDeserializedItems().ToList();
+            var result = allDataEntities.Remove(dataEntity);
+            SaveData(allDataEntities);
+            return result;
         }
 
         public IEnumerable<Dish> GetAll()
         {
-            throw new NotImplementedException();
+            var allDataEntities = GetDeserializedItems().ToList();
+            var allDishes = new List<Dish>();
+
+            foreach (var item in allDataEntities)
+            {
+                var ingredients = GetIngredientsFromDish(item).ToList();
+                allDishes.Add(item.MapToDomainEntity(ingredients));
+            }
+            return allDishes;
         }
 
-        public Dish GetByID(string id)
+        public Dish? GetByID(string id)
         {
-            throw new NotImplementedException();
+            var dataEntity = GetDeserializedItems().FirstOrDefault(x => x.Id == id);
+            if (dataEntity is null)
+            {
+                return null;
+            }
+            var dishIngredients = GetIngredientsFromDish(dataEntity).ToList();
+            return dataEntity.MapToDomainEntity(dishIngredients);
         }
 
         public Dish Update(Dish entity)
         {
-            throw new NotImplementedException();
+            var dataEntity = new DishDataEntity().MapFromDomainEntity(entity);
+            var allDataEntities = GetDeserializedItems().ToList();
+            var dataEntityIndex = allDataEntities.FindIndex(x => x.Id == entity.Id);
+
+            if (dataEntityIndex != -1)
+            {
+                allDataEntities[dataEntityIndex] = dataEntity;
+            }
+            else
+            {
+                allDataEntities.Add(dataEntity);
+            }
+
+            SaveData(allDataEntities);
+            return entity;
         }
 
-        private void SaveData(IEnumerable<Dish> ingredients)
+        private void SaveData(IEnumerable<DishDataEntity> ingredients)
         {
             var payloadAsString = JsonSerializer.Serialize(ingredients);
             File.WriteAllText(_path, payloadAsString);
         }
 
-        private List<Dish> GetDeserializedItems()
+        private IEnumerable<DishDataEntity> GetDeserializedItems()
         {
             string payload = File.ReadAllText(_path);
-            List<Dish>? deserializeItems = JsonSerializer.Deserialize<List<Dish>>(payload);
-            return deserializeItems ?? new List<Dish>();
+            List<DishDataEntity>? deserializeItems = JsonSerializer.Deserialize<List<DishDataEntity>>(payload);
+            return deserializeItems ?? new List<DishDataEntity>();
+        }
+
+        private IEnumerable<Ingredient> GetIngredientsFromDish(DishDataEntity dataEntity)
+        {
+            return _repositoryIngredients.GetByIDs(dataEntity.IngredientsIDs);
         }
 
     }
