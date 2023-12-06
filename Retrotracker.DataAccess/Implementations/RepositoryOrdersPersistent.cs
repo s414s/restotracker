@@ -14,27 +14,53 @@ namespace Retrotracker.DataAccess
 
         public Order Add(Order entity)
         {
-            throw new NotImplementedException();
+            var allOrders = GetAll().ToList();
+            if (allOrders.FindIndex(x => x.Id == entity.Id) != -1)
+            {
+                return entity;
+            }
+
+            allOrders.Add(entity);
+            SaveData(allOrders);
+            return entity;
         }
 
-        public Order Delete(string id)
+        public bool Delete(Order entity)
         {
-            throw new NotImplementedException();
+            var allOrders = GetAll().ToList();
+            var result = allOrders.Remove(entity);
+            if (result)
+            {
+                SaveData(allOrders);
+            }
+            return result;
         }
 
         public IEnumerable<Order> GetAll()
         {
-            throw new NotImplementedException();
+            return GetDeserializedItems();
         }
 
-        public Order GetByID(string id)
+        public Order? GetByID(string id)
         {
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(x => x.Id == id);
         }
 
         public Order Update(Order entity)
         {
-            throw new NotImplementedException();
+            var allOrders = GetAll().ToList();
+            var ingredientIndex = allOrders.FindIndex(x => x.Id == entity.Id);
+            if (ingredientIndex != -1)
+            {
+                allOrders[ingredientIndex] = entity;
+            }
+            else
+            {
+                allOrders.ToList().Add(entity);
+            }
+
+            SaveData(allOrders);
+            return entity;
         }
 
         private void SaveData(IEnumerable<Order> ingredients)

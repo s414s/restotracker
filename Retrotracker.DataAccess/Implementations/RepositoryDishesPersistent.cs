@@ -24,7 +24,10 @@ namespace Retrotracker.DataAccess
             var dataEntity = new DishDataEntity().MapFromDomainEntity(entity);
             var allDataEntities = GetDeserializedItems().ToList();
             var result = allDataEntities.Remove(dataEntity);
-            SaveData(allDataEntities);
+            if (result)
+            {
+                SaveData(allDataEntities);
+            }
             return result;
         }
 

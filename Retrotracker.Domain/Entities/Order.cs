@@ -1,7 +1,7 @@
 namespace Retrotracker.Domain;
 public class Order
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public State State { get; set; }
     public List<Dish> Dishes { get; set; }
     public DateTime Date { get; set; }

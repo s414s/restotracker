@@ -30,7 +30,10 @@ namespace Retrotracker.DataAccess
         {
             var allIngredients = GetAll().ToList();
             var result = allIngredients.Remove(entity);
-            SaveData(allIngredients);
+            if (result)
+            {
+                SaveData(allIngredients);
+            }
             return result;
         }
 
