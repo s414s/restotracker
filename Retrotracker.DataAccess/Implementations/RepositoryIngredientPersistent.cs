@@ -44,7 +44,7 @@ namespace Retrotracker.DataAccess
             return;
         }
 
-        private List<Ingredient> GetDeserializeItems()
+        private List<Ingredient> GetDeserializedItems()
         {
             string payload = File.ReadAllText(_path);
             List<Ingredient>? deserializeItems = JsonSerializer.Deserialize<List<Ingredient>>(payload);
