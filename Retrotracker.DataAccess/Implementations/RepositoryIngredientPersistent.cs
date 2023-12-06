@@ -1,4 +1,5 @@
 ﻿using Retrotracker.Domain;
+using System.Text.Json;
 
 namespace Retrotracker.DataAccess
 {
@@ -35,5 +36,20 @@ namespace Retrotracker.DataAccess
         {
             throw new NotImplementedException();
         }
+
+        private void SaveData(IEnumerable<Ingredient> ingredients)
+        {
+            var payloadAsString = JsonSerializer.Serialize(ingredients);
+            File.WriteAllText(_path, payloadAsString);
+            return;
+        }
+
+        private List<Ingredient> GetDeserializeItems()
+        {
+            string payload = File.ReadAllText(_path);
+            List<Ingredient>? deserializeItems = JsonSerializer.Deserialize<List<Ingredient>>(payload);
+            return deserializeItems ?? new List<Ingredient>();
+        }
+
     }
 }
