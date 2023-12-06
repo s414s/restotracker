@@ -17,7 +17,7 @@ namespace Retrotracker.DataAccess
             throw new NotImplementedException();
         }
 
-        public bool Delete(string id)
+        public bool Delete(User entity)
         {
             throw new NotImplementedException();
         }
