@@ -4,5 +4,6 @@ public enum State
 {
     Pending,
     Preparing,
-    Delivered
+    Delivered,
+    Paid
 }

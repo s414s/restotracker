@@ -8,4 +8,6 @@ dotnet new console -n MyConsoleApp
 dotnet sln add MyConsoleApp/MyConsoleApp.csproj
 dotnet build
 dotnet run --project .\Retrotracker.Presentation\Retrotracker.Presentation.csproj
+
+dotnet add reference path/to/ProjectA/ProjectA.csproj
 ```
