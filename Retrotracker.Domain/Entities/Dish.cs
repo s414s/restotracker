@@ -1,5 +1,5 @@
 namespace Retrotracker.Domain;
-public class Dish
+public class Dish : IHasId
 {
     public string Id { get; set; } = new Guid().ToString();
     public string Name { get; set; } = string.Empty;

@@ -1,14 +1,16 @@
 namespace Retrotracker.Domain;
-public class User
+public class User : IHasId
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string Name { get; set; }
     public string Password { get; set; }
     public DateTime LastLogin { get; set; }
 
+    public User() { }
+
     public User(string name, string password)
     {
-        Id = new Guid();
+        Id = new Guid().ToString();
         Name = name;
         Password = password;
     }

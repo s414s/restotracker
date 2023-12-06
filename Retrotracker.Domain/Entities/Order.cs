@@ -1,5 +1,5 @@
 namespace Retrotracker.Domain;
-public class Order
+public class Order : IHasId
 {
     public string Id { get; set; }
     public State State { get; set; }

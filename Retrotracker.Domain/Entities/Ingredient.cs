@@ -1,5 +1,5 @@
 namespace Retrotracker.Domain;
-public class Ingredient
+public class Ingredient : IHasId
 {
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
