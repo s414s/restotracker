@@ -1,4 +1,4 @@
-namespace SocialX.Domain;
+namespace Retrotracker.Domain;
 
 public interface IRepository<T> where T : class
 {
