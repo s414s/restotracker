@@ -3,51 +3,51 @@ using System.Text.Json;
 
 namespace Retrotracker.DataAccess
 {
-    public class RepositoryIngredientsPersistent : IRepository<Ingredient>
+    public class RepositoryOrdersPersistent : IRepository<Order>
     {
         private readonly string _storageFileName = "ingredientsStorage.json";
         private readonly string _path;
-        public RepositoryIngredientsPersistent()
+        public RepositoryOrdersPersistent()
         {
             _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LocalStorage", _storageFileName);
         }
 
-        public Ingredient Add(Ingredient entity)
+        public Order Add(Order entity)
         {
             throw new NotImplementedException();
         }
 
-        public Ingredient Delete(string id)
+        public Order Delete(string id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Ingredient> GetAll()
+        public IEnumerable<Order> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Ingredient GetByID(string id)
+        public Order GetByID(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Ingredient Update(Ingredient entity)
+        public Order Update(Order entity)
         {
             throw new NotImplementedException();
         }
 
-        private void SaveData(IEnumerable<Ingredient> ingredients)
+        private void SaveData(IEnumerable<Order> ingredients)
         {
             var payloadAsString = JsonSerializer.Serialize(ingredients);
             File.WriteAllText(_path, payloadAsString);
         }
 
-        private List<Ingredient> GetDeserializedItems()
+        private List<Order> GetDeserializedItems()
         {
             string payload = File.ReadAllText(_path);
-            List<Ingredient>? deserializeItems = JsonSerializer.Deserialize<List<Ingredient>>(payload);
-            return deserializeItems ?? new List<Ingredient>();
+            List<Order>? deserializeItems = JsonSerializer.Deserialize<List<Order>>(payload);
+            return deserializeItems ?? new List<Order>();
         }
 
     }
