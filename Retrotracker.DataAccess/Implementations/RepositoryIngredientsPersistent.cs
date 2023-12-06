@@ -1,9 +1,10 @@
 ﻿using Retrotracker.Domain;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
 namespace Retrotracker.DataAccess
 {
-    public class RepositoryIngredientsPersistent : IRepository<Ingredient>
+    public class RepositoryIngredientsPersistent : IRepositoryIngredients
     {
         private readonly string _storageFileName = "ingredientsStorage.json";
         private readonly string _path;
@@ -14,27 +15,57 @@ namespace Retrotracker.DataAccess
 
         public Ingredient Add(Ingredient entity)
         {
-            throw new NotImplementedException();
+            var allIngredients = GetAll().ToList();
+
+            if (allIngredients.FindIndex(x => x.Name == entity.Name) != -1)
+            {
+                return entity;
+            }
+
+            allIngredients.Add(entity);
+            SaveData(allIngredients);
+            return entity;
         }
 
-        public Ingredient Delete(string id)
+        public bool Delete(Ingredient entity)
         {
-            throw new NotImplementedException();
+            var allIngredients = GetAll().ToList();
+            var result = allIngredients.Remove(entity);
+            SaveData(allIngredients);
+            return result;
         }
 
         public IEnumerable<Ingredient> GetAll()
         {
-            throw new NotImplementedException();
+            return GetDeserializedItems();
         }
 
-        public Ingredient GetByID(string id)
+        public Ingredient? GetByID(string id)
         {
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(x => x.Id == id);
+        }
+
+        public IEnumerable<Ingredient> GetByIDs(List<string> ids)
+        {
+            return GetAll().Where(x => ids.Contains(x.Id));
         }
 
         public Ingredient Update(Ingredient entity)
         {
-            throw new NotImplementedException();
+            var allIngredients = GetAll().ToList();
+            var ingredientIndex = allIngredients.FindIndex(x => x.Id == entity.Id);
+
+            if (ingredientIndex != -1)
+            {
+                allIngredients[ingredientIndex] = entity;
+            }
+            else
+            {
+                allIngredients.ToList().Add(entity);
+            }
+
+            SaveData(allIngredients);
+            return entity;
         }
 
         private void SaveData(IEnumerable<Ingredient> ingredients)

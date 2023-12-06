@@ -6,5 +6,5 @@ public class Order
     public List<Dish> Dishes { get; set; }
     public DateTime Date { get; set; }
     public int TableNumber { get; set; }
-    public string AuthorId { get; set; } = string.Empty;
+    public User Author { get; set; }
 }

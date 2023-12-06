@@ -1,24 +1,22 @@
 namespace Retrotracker.Domain;
 public class Dish
 {
-    public string Id { get; set; }
-    public string Name { get; set; }
+    public string Id { get; set; } = new Guid().ToString();
+    public string Name { get; set; } = string.Empty;
     public decimal Price { get; set; }
-    public List<Ingredient> Ingredients { get; set; }
+    public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+    public decimal Calories
+    {
+        get { return Ingredients.Sum(x => x.Calories * x.Quantity); }
+        private set { }
+    }
 
     public Dish() { }
 
     public Dish(string name, decimal price)
     {
-        Id = new Guid().ToString();
         Name = name;
         Price = price;
-        Ingredients = new List<Ingredient>();
-    }
-
-    public decimal TotalCalories()
-    {
-        return Ingredients.Sum(x => x.Calories * x.Quantity);
     }
 
 }
