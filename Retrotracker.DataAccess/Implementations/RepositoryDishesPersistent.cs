@@ -17,7 +17,12 @@ public class RepositoryDishesPersistent : IRepository<Dish>
 
     public Dish Add(Dish entity)
     {
-        throw new NotImplementedException();
+        if (_allItems.FindIndex(x => x.Name == entity.Name) != -1)
+        {
+            throw new ArgumentException("Element already exists");
+        }
+        _allItems.Add(entity);
+        return entity;
     }
 
     public bool Delete(Dish entity)
