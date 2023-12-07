@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Retrotracker.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Retrotracker.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Retrotracker.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Retrotracker.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Retrotracker.Domain/Retrotracker.Domain.csproj",
+      "msbuildProject": "../Retrotracker.Domain/Retrotracker.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Retrotracker.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Alberto\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Alberto\\Documents\\AlbertoSalas\\Codigo\\GIT\\restotracker\\Retrotracker.Domain\\Retrotracker.Domain.csproj": {
+              "projectPath": "C:\\Users\\Alberto\\Documents\\AlbertoSalas\\Codigo\\GIT\\restotracker\\Retrotracker.Domain\\Retrotracker.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
