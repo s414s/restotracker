@@ -16,6 +16,7 @@ public class UserServices : IUserServices
         try
         {
             var result = _usersRepo.Add(newUser.MapToDomainEntity());
+            _usersRepo.SaveChanges();
             return result is not null;
         }
         catch (Exception)
@@ -28,7 +29,9 @@ public class UserServices : IUserServices
     {
         try
         {
-            return _usersRepo.Delete(user.MapToDomainEntity());
+            var result = _usersRepo.Delete(user.MapToDomainEntity());
+            _usersRepo.SaveChanges();
+            return result;
         }
         catch (Exception)
         {
@@ -41,6 +44,7 @@ public class UserServices : IUserServices
         try
         {
             _usersRepo.Update(user.MapToDomainEntity());
+            _usersRepo.SaveChanges();
             return user;
         }
         catch (Exception)

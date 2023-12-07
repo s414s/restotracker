@@ -15,3 +15,5 @@ serviceCollection.AddSingleton<IRepository<User>, RepositoryUsersPersistent>();
 serviceCollection.AddSingleton<IRepository<Order>, RepositoryOrdersPersistent>();
 serviceCollection.AddSingleton<IRepository<Ingredient>, RepositoryIngredientsPersistent>();
 serviceCollection.AddSingleton<IRepository<Dish>, RepositoryDishesPersistent>();
+
+Console.WriteLine("Dependency injection done!");
