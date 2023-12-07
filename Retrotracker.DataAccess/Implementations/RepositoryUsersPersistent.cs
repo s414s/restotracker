@@ -3,7 +3,7 @@
 namespace Retrotracker.DataAccess;
 public class RepositoryUsersPersistent : RepositoryPersistent<User>, IRepository<User>
 {
-    public RepositoryUsersPersistent(string jsonFileName) : base(jsonFileName) { }
+    public RepositoryUsersPersistent() : base("usersStorage.json") { }
 
     public override User? GetByID(string username)
     {

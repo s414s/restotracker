@@ -3,7 +3,7 @@
 namespace Retrotracker.DataAccess;
 public class RepositoryIngredientsPersistent : RepositoryPersistent<Ingredient>, IRepositoryIngredients
 {
-    public RepositoryIngredientsPersistent(string jsonFileName) : base(jsonFileName) { }
+    public RepositoryIngredientsPersistent() : base("ingredientsStorage.json") { }
 
     public IEnumerable<Ingredient> GetByIDs(List<string> ids)
     {

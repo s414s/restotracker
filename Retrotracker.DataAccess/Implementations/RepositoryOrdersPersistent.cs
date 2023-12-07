@@ -4,5 +4,5 @@ namespace Retrotracker.DataAccess;
 
 public class RepositoryOrdersPersistent : RepositoryPersistent<Order>, IRepository<Order>
 {
-    public RepositoryOrdersPersistent(string jsonFileName) : base(jsonFileName) { }
+    public RepositoryOrdersPersistent() : base("ordersStorage.json") { }
 }
