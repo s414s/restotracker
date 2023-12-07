@@ -53,10 +53,10 @@ public class RepositoryPersistent<T> where T : class, IHasId
         return entity;
     }
 
-    public virtual void SaveChanges(IEnumerable<T> items)
+    public virtual void SaveChanges()
     {
         var options = new JsonSerializerOptions { WriteIndented = true };
-        var payloadAsString = JsonSerializer.Serialize(items, options);
+        var payloadAsString = JsonSerializer.Serialize(_allItems, options);
         File.WriteAllText(_path, payloadAsString);
     }
 

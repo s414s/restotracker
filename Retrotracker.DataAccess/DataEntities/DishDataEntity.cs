@@ -17,7 +17,7 @@ public class DishDataEntity
         };
     }
 
-    public DishDataEntity MapFromDomainEntity(Dish dish)
+    public static DishDataEntity MapFromDomainEntity(Dish dish)
     {
         return new DishDataEntity
         {
