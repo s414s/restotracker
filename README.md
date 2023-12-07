@@ -10,4 +10,6 @@ dotnet build
 dotnet run --project .\Retrotracker.Presentation\Retrotracker.Presentation.csproj
 
 dotnet add reference path/to/ProjectA/ProjectA.csproj
+
+dotnet add package Microsoft.Extensions.DependencyInjection --version 8.0.0
 ```
