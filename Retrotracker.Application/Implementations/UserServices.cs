@@ -49,12 +49,12 @@ public class UserServices : IUserServices
         }
     }
 
-    public UserDTO? SignIn(AuthUserDTO userCredentials)
+    public UserDTO? SignIn(string username, string password)
     {
         try
         {
-            var user = _usersRepo.GetByID(userCredentials.Username);
-            if (user?.Password != userCredentials.Password)
+            var user = _usersRepo.GetByID(username);
+            if (user?.Password != password)
             {
                 return null;
             }

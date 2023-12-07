@@ -6,7 +6,7 @@ public class ConsoleLogger
     private readonly IUserServices _userServices;
     private readonly IOrderServices _orderrServices;
     private readonly IDishServices _dishServices;
-    private readonly List<string> optionNames = new List<string>(){
+    private readonly List<string> optionNames = new(){
                 {"1. Sign In"},
                 {"2. Create User"},
                 {"3. Exit"},
@@ -14,6 +14,13 @@ public class ConsoleLogger
 
     private bool exit = false;
     private UserDTO? activeUser = null;
+
+    public ConsoleLogger(IUserServices userServices, IOrderServices orderServices, IDishServices dishServices)
+    {
+        _userServices = userServices;
+        _orderrServices = orderServices;
+        _dishServices = dishServices;
+    }
 
     public void Run()
     {
@@ -30,31 +37,28 @@ public class ConsoleLogger
 
     public void AuthenticateUser()
     {
-        Console.WriteLine("Introduce your account number");
-
+        Console.WriteLine("Authenticate your user");
         while (true)
         {
-            int inputAccount = AskForInteger("Introduce your account number", 1);
+            string inputUsername = AskForString("Introduce your username");
             string inputPassword = AskForString("Introduce your password");
-            (UserDTO activeUser, string error) = _accountService.AuthenticateUser(inputAccount, inputPassword);
-            if (error == null)
+            var activeUser = _userServices.SignIn(inputUsername, inputPassword);
+            if (activeUser is not null)
             {
                 this.activeUser = activeUser;
-                break;
+                return;
+                // break;
             }
-            Console.WriteLine(error);
-            Console.WriteLine("Try again");
+            Console.WriteLine("Username or password incorrect, try again");
         }
-        Console.WriteLine("You reached the maximum number of attempts. Try latter on.");
-        exit = true;
     }
 
-    public int AskForInteger(string consoleText, int minimumValue)
+    public static int AskForInteger(string consoleText, int minimumValue)
     {
         Console.WriteLine($"{consoleText}. It must be an integer greater or equal to {minimumValue}.");
         while (true)
         {
-            (int validatedInput, string error) = new InputValidator().ParseInteger(Console.ReadLine(), minimumValue);
+            (int validatedInput, string error) = InputValidator.ParseInteger(Console.ReadLine(), minimumValue);
             if (error is null)
             {
                 return validatedInput;
@@ -67,12 +71,12 @@ public class ConsoleLogger
         }
     }
 
-    public decimal AskForDecimal(string consoleText, int minimumValue)
+    public static decimal AskForDecimal(string consoleText, int minimumValue)
     {
         Console.WriteLine($"{consoleText}. It must be a decimal number greater or equal to {minimumValue}.");
         while (true)
         {
-            (decimal validatedInput, string error) = new InputValidator().ParseDecimal(Console.ReadLine(), minimumValue);
+            (decimal validatedInput, string error) = InputValidator.ParseDecimal(Console.ReadLine(), minimumValue);
 
             if (error is null)
             {
@@ -86,12 +90,12 @@ public class ConsoleLogger
         }
     }
 
-    public string AskForString(string consoleText)
+    public static string AskForString(string consoleText)
     {
         Console.WriteLine($"{consoleText}. It must be a valid string");
         while (true)
         {
-            (string validatedInput, string error) = new InputValidator().ParseString(Console.ReadLine());
+            (string validatedInput, string error) = InputValidator.ParseString(Console.ReadLine());
 
             if (error is null)
             {
@@ -116,6 +120,6 @@ public class ConsoleLogger
     public void Logout()
     {
         activeUser = null;
-        Console.WriteLine("Logging you out...");
+        Console.WriteLine("Logging out...");
     }
 }
