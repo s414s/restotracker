@@ -2,6 +2,7 @@
 using System.Text.Json;
 
 namespace Retrotracker.DataAccess;
+
 public class RepositoryPersistent<T> where T : class, IHasId
 {
     private readonly string _storageFileName;

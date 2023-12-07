@@ -2,6 +2,7 @@
 using System.Text.Json;
 
 namespace Retrotracker.DataAccess;
+
 public class RepositoryIngredientsPersistent : IRepositoryIngredients
 {
     private readonly string _storageFileName = "ingredientsStorage.json";
