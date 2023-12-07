@@ -13,3 +13,12 @@ C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Pre
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.pdb
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.genruntimeconfig.cache
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\ref\Retrotracker.Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Application.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.DataAccess.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Domain.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Application.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.DataAccess.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Domain.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.csproj.CopyComplete

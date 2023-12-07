@@ -6,75 +6,67 @@ public class RepositoryPersistent<T> where T : class, IHasId
 {
     private readonly string _storageFileName;
     private readonly string _path;
+    private List<T> _allItems = new();
     public RepositoryPersistent(string jsonFileName)
     {
         _storageFileName = jsonFileName;
         _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LocalStorage", _storageFileName);
+        GetDeserializedItems();
     }
 
     public virtual T Add(T entity)
     {
-        var allEntities = GetAll().ToList();
-        if (allEntities.FindIndex(x => x.Id == entity.Id) != -1)
+        if (_allItems.FindIndex(x => x.Id == entity.Id) == -1)
         {
-            return entity;
+            _allItems.Add(entity);
         }
-
-        allEntities.Add(entity);
-        SaveData(allEntities);
         return entity;
     }
 
     public virtual bool Delete(T entity)
     {
-        var allEntities = GetAll().ToList();
-        var result = allEntities.Remove(entity);
-        if (result)
-        {
-            SaveData(allEntities);
-        }
-        return result;
+        return _allItems.Remove(entity);
     }
 
     public virtual IEnumerable<T> GetAll()
     {
-        return GetDeserializedItems();
+        return _allItems;
     }
 
     public virtual T? GetByID(string id)
     {
-        return GetAll().FirstOrDefault(x => x.Id == id);
+        return _allItems.FirstOrDefault(x => x.Id == id);
     }
 
     public virtual T Update(T entity)
     {
-        var allEntities = GetAll().ToList();
-        var ingredientIndex = allEntities.FindIndex(x => x.Id == entity.Id);
-
+        var ingredientIndex = _allItems.FindIndex(x => x.Id == entity.Id);
         if (ingredientIndex != -1)
         {
-            allEntities[ingredientIndex] = entity;
+            _allItems[ingredientIndex] = entity;
         }
         else
         {
-            allEntities.ToList().Add(entity);
+            _allItems.Add(entity);
         }
-
-        SaveData(allEntities);
         return entity;
     }
 
-    private void SaveData(IEnumerable<T> ingredients)
+    public virtual void SaveChanges(IEnumerable<T> items)
     {
-        var payloadAsString = JsonSerializer.Serialize(ingredients);
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        var payloadAsString = JsonSerializer.Serialize(items, options);
         File.WriteAllText(_path, payloadAsString);
     }
 
-    private List<T> GetDeserializedItems()
+    private void GetDeserializedItems()
     {
+        if (!File.Exists(_path))
+        {
+            throw new NullReferenceException($"The path for the file {_path} does not exist");
+        }
         string payload = File.ReadAllText(_path);
         List<T>? deserializeItems = JsonSerializer.Deserialize<List<T>>(payload);
-        return deserializeItems ?? new List<T>();
+        _allItems = deserializeItems ?? new List<T>();
     }
-
 }

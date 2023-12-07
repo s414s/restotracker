@@ -1,0 +1,15 @@
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\bin\Debug\net7.0\Retrotracker.DataAccess.deps.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\bin\Debug\net7.0\Retrotracker.DataAccess.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\bin\Debug\net7.0\Retrotracker.DataAccess.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\bin\Debug\net7.0\Retrotracker.Domain.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\bin\Debug\net7.0\Retrotracker.Domain.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.AssemblyInfo.cs
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.csproj.CopyComplete
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\refint\Retrotracker.DataAccess.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\Retrotracker.DataAccess.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.DataAccess\obj\Debug\net7.0\ref\Retrotracker.DataAccess.dll
