@@ -1,0 +1,15 @@
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Presentation.exe
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Presentation.deps.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Presentation.runtimeconfig.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Presentation.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.csproj.AssemblyReference.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.AssemblyInfoInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.AssemblyInfo.cs
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.csproj.CoreCompileInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\refint\Retrotracker.Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.genruntimeconfig.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\ref\Retrotracker.Presentation.dll
