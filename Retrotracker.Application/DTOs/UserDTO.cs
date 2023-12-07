@@ -6,7 +6,6 @@ public class UserDTO
 {
     public string Name { get; set; }
     public string Surname { get; set; }
-    public string Password { get; set; }
     public Role Role { get; set; }
 
     public User MapToDomainEntity()
@@ -15,7 +14,6 @@ public class UserDTO
         {
             Name = Name,
             Surname = Surname,
-            Password = Password,
             Role = Role
         };
     }
@@ -26,7 +24,6 @@ public class UserDTO
         {
             Name = user.Name,
             Surname = user.Surname,
-            Password = user.Password,
             Role = user.Role,
         };
     }
