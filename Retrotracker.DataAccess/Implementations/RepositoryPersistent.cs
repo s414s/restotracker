@@ -13,7 +13,7 @@ namespace Retrotracker.DataAccess
             _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LocalStorage", _storageFileName);
         }
 
-        public T Add(T entity)
+        public virtual T Add(T entity)
         {
             var allEntities = GetAll().ToList();
             if (allEntities.FindIndex(x => x.Id == entity.Id) != -1)
@@ -26,7 +26,7 @@ namespace Retrotracker.DataAccess
             return entity;
         }
 
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
             var allEntities = GetAll().ToList();
             var result = allEntities.Remove(entity);
@@ -37,17 +37,17 @@ namespace Retrotracker.DataAccess
             return result;
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return GetDeserializedItems();
         }
 
-        public T? GetByID(string id)
+        public virtual T? GetByID(string id)
         {
             return GetAll().FirstOrDefault(x => x.Id == id);
         }
 
-        public T Update(T entity)
+        public virtual T Update(T entity)
         {
             var allEntities = GetAll().ToList();
             var ingredientIndex = allEntities.FindIndex(x => x.Id == entity.Id);

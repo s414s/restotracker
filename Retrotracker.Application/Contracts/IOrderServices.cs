@@ -4,6 +4,6 @@ namespace Retrotracker.Application;
 
 public interface IOrderServices
 {
-    bool CreateOrder();
+    bool Create();
     bool ChangeState(State state);
 }
