@@ -11,7 +11,7 @@ public class OrderServices : IOrderServices
         _ordersRepo = ordersRepo;
     }
 
-    public bool ChangeState(State state)
+    public bool ChangeState(string state)
     {
         throw new NotImplementedException();
     }
@@ -21,7 +21,7 @@ public class OrderServices : IOrderServices
         throw new NotImplementedException();
     }
 
-    public List<OrderDTO> GetAll(State state)
+    public List<OrderDTO> GetAll(string state)
     {
         throw new NotImplementedException();
     }
