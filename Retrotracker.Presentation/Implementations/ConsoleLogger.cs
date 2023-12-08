@@ -45,21 +45,15 @@ public class ConsoleLogger
 
     private void PrintMainScreen(Role role)
     {
-        List<int> options;
-        if (role == Role.admin)
-        {
-            options = new() { 2, 3, 8, 9 };
-        }
-        else
-        {
-            options = new() { 2, 3, 8, 9 };
-        }
+        List<int> options = role == Role.admin
+            ? new() { 2, 3, 8, 9 }
+            : new() { 2, 3, 8, 9 };
         AskForOption(options);
     }
 
     private void AskForOption(List<int> functions)
     {
-        Console.WriteLine("Choose one of the available options:");
+        Console.WriteLine("OPTIONS");
         foreach (var key in functions)
         {
             if (_mappedFunctions.TryGetValue(key, out Functionality? function))
@@ -69,7 +63,7 @@ public class ConsoleLogger
             }
             Console.WriteLine($"Key {key} not found");
         }
-        int chosenOption = AskForInteger("Introduce an option", functions);
+        int chosenOption = AskForInteger("Choose an option", functions);
         _mappedFunctions[chosenOption].Execute();
     }
 
@@ -111,8 +105,9 @@ public class ConsoleLogger
 
     private static int AskForInteger(string consoleText, List<int> allowedRange)
     {
+        var values = string.Join(", ", allowedRange);
         Console.WriteLine($"{consoleText}.");
-        Console.WriteLine($"It must be an integer in the range {allowedRange}.");
+        Console.WriteLine($"It must be one of the following integers: {values}.");
         while (true)
         {
             (int validatedInput, string? error) = InputValidator.ParseInteger(Console.ReadLine() ?? "", allowedRange);

@@ -1,10 +1,17 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class DishDataEntity
 {
+    [JsonPropertyName("id")]
     public string Id { get; set; } = new Guid().ToString();
+    [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
+    [JsonPropertyName("price")]
     public decimal Price { get; set; }
+    [JsonPropertyName("quantities")]
     public List<decimal> Quantities { get; set; } = new List<decimal>();
+    [JsonPropertyName("ingredientsIDs")]
     public List<string> IngredientsIDs { get; set; } = new List<string>();
 
     public Dish MapToDomainEntity(List<Ingredient> ingredients)

@@ -58,7 +58,7 @@ public class RepositoryPersistent<T> where T : class, IHasId
         var options = new JsonSerializerOptions
         {
             WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            // PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
         var payloadAsString = JsonSerializer.Serialize(_allItems, options);
         File.WriteAllText(_path, payloadAsString);

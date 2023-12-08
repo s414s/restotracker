@@ -60,7 +60,7 @@ public class RepositoryDishesPersistent : IRepository<Dish>
         var options = new JsonSerializerOptions
         {
             WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            // PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
         List<DishDataEntity> data = _allItems.Select(x => DishDataEntity.MapFromDomainEntity(x)).ToList() ?? new();
         var payloadAsString = JsonSerializer.Serialize(data, options);
