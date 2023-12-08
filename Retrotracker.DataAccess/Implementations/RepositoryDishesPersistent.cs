@@ -73,10 +73,11 @@ public class RepositoryDishesPersistent : IRepository<Dish>
         {
             throw new NullReferenceException($"The path for the file {_path} does not exist");
         }
+
         string payload = File.ReadAllText(_path);
         List<DishDataEntity>? deserializeItems = JsonSerializer.Deserialize<List<DishDataEntity>>(payload) ?? new List<DishDataEntity>();
-
         List<Dish> domainEntities = new();
+
         foreach (var item in deserializeItems)
         {
             var ingredients = GetIngredientsFromDish(item).ToList();

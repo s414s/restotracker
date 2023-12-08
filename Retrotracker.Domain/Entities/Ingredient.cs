@@ -11,5 +11,5 @@ public class Ingredient : IHasId
 public class IngredientDecomposition
 {
     public decimal Quantity { get; set; }
-    public Ingredient Ingredient { get; set; }
+    public Ingredient Ingredient { get; set; } = new();
 }
