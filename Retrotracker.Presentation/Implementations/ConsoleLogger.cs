@@ -25,7 +25,7 @@ public class ConsoleLogger
     public void Run()
     {
         AuthenticateUser();
-        if (exit) { return; }
+        // if (exit) { return; }
 
         do
         {
