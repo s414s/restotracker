@@ -43,9 +43,9 @@ public class ConsoleLogger
         AskForOption(options);
     }
 
-    private void PrintMainScreen(Role role)
+    private void PrintMainScreen(string role)
     {
-        List<int> options = role == Role.admin
+        List<int> options = role == "admin"
             ? new() { 2, 3, 8, 9 }
             : new() { 2, 3, 8, 9 };
         AskForOption(options);
@@ -88,16 +88,16 @@ public class ConsoleLogger
     private void PrintPendingOrders()
     {
         Console.WriteLine("Pending Orders:");
-        PrintOrders(State.ordered);
+        PrintOrders("ordered");
     }
 
     private void PrintPaidOrders()
     {
         Console.WriteLine("Paid Orders:");
-        PrintOrders(State.paid);
+        PrintOrders("paid");
     }
 
-    private void PrintOrders(State state)
+    private void PrintOrders(string state)
     {
         var orders = _orderServices.GetAll(state);
         ItemsLogger<OrderDTO>.PrintItems(orders);

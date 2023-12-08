@@ -12,7 +12,7 @@ public class User : IHasId
     [JsonPropertyName("password")]
     public string Password { get; set; } = string.Empty;
     [JsonPropertyName("role")]
-    public Role Role { get; set; } = Role.worker;
+    public string Role { get; set; } = "worker";
     [JsonIgnore]
     public string Username
     {

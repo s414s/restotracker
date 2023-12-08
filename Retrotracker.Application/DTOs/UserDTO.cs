@@ -6,7 +6,7 @@ public class UserDTO
 {
     public string Name { get; set; } = string.Empty;
     public string Surname { get; set; } = string.Empty;
-    public Role Role { get; set; }
+    public string Role { get; set; } = string.Empty;
 
     public User MapToDomainEntity()
     {

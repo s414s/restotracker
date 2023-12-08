@@ -6,7 +6,7 @@ public class Order : IHasId
     [JsonPropertyName("id")]
     public string Id { get; set; } = new Guid().ToString();
     [JsonPropertyName("state")]
-    public State State { get; set; } = State.ordered;
+    public string State { get; set; } = "ordered";
     [JsonPropertyName("dishes")]
     public List<Dish> Dishes { get; set; } = new List<Dish>();
     [JsonPropertyName("date")]

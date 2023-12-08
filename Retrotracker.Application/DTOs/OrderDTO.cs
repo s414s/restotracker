@@ -4,7 +4,7 @@ namespace Retrotracker.Application;
 public class OrderDTO
 {
     public string Id { get; set; } = string.Empty;
-    public State State { get; set; }
+    public string State { get; set; } = string.Empty;
     public DateTime Date { get; set; }
     public int TableNumber { get; set; }
 

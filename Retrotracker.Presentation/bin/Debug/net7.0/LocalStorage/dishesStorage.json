@@ -1,28 +1,28 @@
 [
     {
-        "Id": "1d8747cc-df0f-4ed9-a313-012345678901",
-        "Name": "Pizza",
-        "Price": 12.99,
-        "Quantities": [
+        "id": "1d8747cc-df0f-4ed9-a313-012345678901",
+        "name": "Pizza",
+        "price": 12.99,
+        "quantities": [
             1.0,
             200.0,
             100.0
         ],
-        "IngredientsIDs": [
+        "ingredientsIDs": [
             "79e7f671-b81c-428d-9b8d-f79543c263d2",
             "ec98a1e6-314e-460e-80c7-0e1e65b314b9",
             "1fd6e144-929d-46ed-afa0-f30f72648e90"
         ]
     },
     {
-        "Id": "2a3f69df-3f48-45cf-97f2-987654321098",
-        "Name": "Salad",
-        "Price": 6.99,
-        "Quantities": [
+        "id": "2a3f69df-3f48-45cf-97f2-987654321098",
+        "name": "Salad",
+        "price": 6.99,
+        "quantities": [
             0.5,
             1.0
         ],
-        "IngredientsIDs": [
+        "ingredientsIDs": [
             "79e7f671-b81c-428d-9b8d-f79543c263d2",
             "1e545326-99c6-4460-be55-35f42e20e68b"
         ]
