@@ -7,20 +7,6 @@ public class ConsoleLogger
     private readonly IUserServices _userServices;
     private readonly IOrderServices _orderServices;
     private readonly IDishServices _dishServices;
-
-    // private readonly List<string> loginOptions = new(){
-    //     "Sign In",
-    //     "Exit",
-    // };
-    // private readonly List<string> options = new(){
-    //     "View Pending Orders",
-    //     "View Paid Orders",
-    //     "Create New Order",
-    //     "Change Order",
-    //     "Delete Order",
-    //     "Exit",
-    // };
-
     private readonly Dictionary<int, Functionality> _mappedFunctions = new();
     private bool _exit;
     private UserDTO? _activeUser;
@@ -34,44 +20,62 @@ public class ConsoleLogger
         _mappedFunctions.Add(1, new Functionality { Description = "Sign In", Function = AuthenticateUser });
         _mappedFunctions.Add(2, new Functionality { Description = "Print pending orders", Function = PrintPendingOrders });
         _mappedFunctions.Add(3, new Functionality { Description = "Print paid orders", Function = PrintPaidOrders });
-        _mappedFunctions.Add(9, new Functionality { Description = "Exit", Function = Logout });
+        _mappedFunctions.Add(8, new Functionality { Description = "Sign Out", Function = Logout });
+        _mappedFunctions.Add(9, new Functionality { Description = "Exit", Function = Exit });
     }
 
     public void Run()
     {
-        StartUp();
-        AuthenticateUser();
-        if (_exit) { return; }
         do
         {
-            PrintFunctions(new List<int> { 1, 2, 3, 9 });
-            // ItemsLogger<string>.PrintItems(options);
-            // AskForOption();
+            if (_activeUser is null)
+            {
+                PrintSignInScreen();
+            }
+            else
+            {
+                PrintMainScreen(_activeUser.Role);
+            }
         }
         while (!_exit);
     }
 
-    public void StartUp()
+    public void PrintSignInScreen()
     {
         List<int> options = new() { 1, 9 };
-        PrintFunctions(options);
-        int chosenOption = AskForInteger("Introduce an option", options);
-        _mappedFunctions[chosenOption].Execute();
+        AskForOption(options);
     }
 
-    public void PrintFunctions(List<int> functions)
+    public void PrintMainScreen(Role role)
     {
+        List<int> options;
+        if (role == Role.admin)
+        {
+            options = new() { 2, 3, 8, 9 };
+        }
+        else
+        {
+            options = new() { 2, 3, 8, 9 };
+        }
+        AskForOption(options);
+    }
+
+    public void AskForOption(List<int> functions)
+    {
+        Console.WriteLine("Choose one of the available options:");
         foreach (var key in functions)
         {
-            if (_mappedFunctions.TryGetValue(key, out Functionality function))
+            if (_mappedFunctions.TryGetValue(key, out Functionality? function))
             {
-                Console.WriteLine($"{key}.- {function.ToString()}");
+                Console.WriteLine($"{key}.- {function}");
             }
             else
             {
                 Console.WriteLine($"Key {key} not found");
             }
         }
+        int chosenOption = AskForInteger("Introduce an option", functions);
+        _mappedFunctions[chosenOption].Execute();
     }
 
     public void AuthenticateUser()
@@ -108,39 +112,6 @@ public class ConsoleLogger
     {
         var orders = _orderServices.GetAll(state);
         ItemsLogger<OrderDTO>.PrintItems(orders);
-    }
-
-    public void AskForOption()
-    {
-        string chosenOption = AskForString("Introduce an option");
-        if (_exit) { return; }
-        switch (chosenOption)
-        {
-            case "1":
-                PrintOrders(State.ordered);
-                break;
-            case "2":
-                PrintOrders(State.paid);
-                break;
-            case "3":
-                // PrintTransactions(TransactionType.All);
-                break;
-            case "4":
-                // PrintTransactions(TransactionType.Income);
-                break;
-            case "5":
-                // PrintTransactions(TransactionType.Outcome);
-                break;
-            case "6":
-                // PrintAccountBalance();
-                break;
-            case "7":
-                Logout();
-                break;
-            default:
-                Console.WriteLine("Option not available. Please introduce a number between 1 and 7");
-                break;
-        }
     }
 
     public static int AskForInteger(string consoleText, List<int> allowedRange)
@@ -193,7 +164,12 @@ public class ConsoleLogger
     public void Logout()
     {
         _activeUser = null;
-        _exit = true;
         Console.WriteLine("Logged out");
+    }
+
+    public void Exit()
+    {
+        _exit = true;
+        Console.WriteLine("Good Bye");
     }
 }
