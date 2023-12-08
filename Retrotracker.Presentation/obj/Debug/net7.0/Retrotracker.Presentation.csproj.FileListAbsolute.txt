@@ -22,3 +22,7 @@ C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Pre
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.DataAccess.pdb
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\Retrotracker.Domain.pdb
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\obj\Debug\net7.0\Retrotracker.Presentation.csproj.CopyComplete
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\LocalStorage\dishesStorage.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\LocalStorage\ingredientsStorage.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\LocalStorage\ordersStorage.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Presentation\bin\Debug\net7.0\LocalStorage\usersStorage.json

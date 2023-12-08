@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class Dish : IHasId
 {
@@ -5,10 +7,10 @@ public class Dish : IHasId
     public string Name { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+    [JsonIgnore]
     public decimal Calories
     {
         get { return Ingredients.Sum(x => x.Calories * x.Quantity); }
-        private set { }
     }
 
     public Dish() { }

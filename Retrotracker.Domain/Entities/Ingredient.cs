@@ -6,4 +6,5 @@ public class Ingredient : IHasId
     public int Calories { get; set; }
     public string UnitOfMeasurement { get; set; } = string.Empty;
     public decimal Quantity { get; set; }
+    public Ingredient() { }
 }

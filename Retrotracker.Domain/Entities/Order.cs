@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class Order : IHasId
 {
@@ -7,6 +9,7 @@ public class Order : IHasId
     public DateTime Date { get; set; } = DateTime.Now;
     public int TableNumber { get; set; }
     public User Author { get; set; }
+    [JsonIgnore]
     public decimal TotalPrice
     {
         get

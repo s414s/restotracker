@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class User : IHasId
 {
@@ -5,13 +7,13 @@ public class User : IHasId
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Password { get; set; }
+    [JsonIgnore]
     public string Username
     {
         get
         {
             return $"{Name.ToLower()}{Surname.ToLower()}";
         }
-        private set { }
     }
     public Role Role { get; set; }
     public DateTime LastLogin { get; set; }

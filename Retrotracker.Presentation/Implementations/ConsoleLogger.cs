@@ -26,7 +26,6 @@ public class ConsoleLogger
     {
         AuthenticateUser();
         // if (exit) { return; }
-
         do
         {
             PrintOptions();
