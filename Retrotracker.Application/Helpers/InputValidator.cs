@@ -3,9 +3,9 @@ using System.Globalization;
 namespace Retrotracker.Application;
 public class InputValidator
 {
-    public static (int validatedInput, string? error) ParseInteger(string userInput, int minValue, int maxValue)
+    public static (int validatedInput, string? error) ParseInteger(string userInput, List<int> allowedRange)
     {
-        if (int.TryParse(userInput, out int validatedInput) && validatedInput >= minValue && validatedInput <= maxValue)
+        if (int.TryParse(userInput, out int validatedInput) && allowedRange.Contains(validatedInput))
         {
             return (validatedInput, null);
         }

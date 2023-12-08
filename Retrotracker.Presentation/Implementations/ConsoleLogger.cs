@@ -7,47 +7,71 @@ public class ConsoleLogger
     private readonly IUserServices _userServices;
     private readonly IOrderServices _orderServices;
     private readonly IDishServices _dishServices;
-    private readonly List<string> loginOptions = new(){
-        "Sign In",
-        "Exit",
-    };
 
-    private readonly List<string> options = new(){
-        "View Available Dishes",
-        "View Pending Orders",
-        "Create New Orders",
-        "Change Order",
-        "Delete Orders",
-        "Exit",
-    };
+    // private readonly List<string> loginOptions = new(){
+    //     "Sign In",
+    //     "Exit",
+    // };
+    // private readonly List<string> options = new(){
+    //     "View Pending Orders",
+    //     "View Paid Orders",
+    //     "Create New Order",
+    //     "Change Order",
+    //     "Delete Order",
+    //     "Exit",
+    // };
 
-    private bool exit = false;
-    private UserDTO? activeUser = null;
+    private readonly Dictionary<int, Functionality> _mappedFunctions = new();
+    private bool _exit;
+    private UserDTO? _activeUser;
 
     public ConsoleLogger(IUserServices userServices, IOrderServices orderServices, IDishServices dishServices)
     {
         _userServices = userServices;
         _orderServices = orderServices;
         _dishServices = dishServices;
+
+        _mappedFunctions.Add(1, new Functionality { Description = "Sign In", Function = AuthenticateUser });
+        _mappedFunctions.Add(2, new Functionality { Description = "Print pending orders", Function = PrintPendingOrders });
+        _mappedFunctions.Add(3, new Functionality { Description = "Print paid orders", Function = PrintPaidOrders });
+        _mappedFunctions.Add(9, new Functionality { Description = "Exit", Function = Logout });
     }
 
     public void Run()
     {
         StartUp();
         AuthenticateUser();
-        // if (exit) { return; }
+        if (_exit) { return; }
         do
         {
-            ItemsLogger<string>.PrintItems(options);
+            PrintFunctions(new List<int> { 1, 2, 3, 9 });
+            // ItemsLogger<string>.PrintItems(options);
             // AskForOption();
         }
-        while (!exit);
+        while (!_exit);
     }
 
     public void StartUp()
     {
-        ItemsLogger<string>.PrintItems(loginOptions);
-        int optionIndex = AskForInteger("Introduce an option", 1, loginOptions.Count + 1) - 1;
+        List<int> options = new() { 1, 9 };
+        PrintFunctions(options);
+        int chosenOption = AskForInteger("Introduce an option", options);
+        _mappedFunctions[chosenOption].Execute();
+    }
+
+    public void PrintFunctions(List<int> functions)
+    {
+        foreach (var key in functions)
+        {
+            if (_mappedFunctions.TryGetValue(key, out Functionality function))
+            {
+                Console.WriteLine($"{key}.- {function.ToString()}");
+            }
+            else
+            {
+                Console.WriteLine($"Key {key} not found");
+            }
+        }
     }
 
     public void AuthenticateUser()
@@ -60,7 +84,7 @@ public class ConsoleLogger
             var activeUser = _userServices.SignIn(inputUsername, inputPassword);
             if (activeUser is not null)
             {
-                this.activeUser = activeUser;
+                _activeUser = activeUser;
                 return;
                 // break;
             }
@@ -68,17 +92,28 @@ public class ConsoleLogger
         }
     }
 
+    public void PrintPendingOrders()
+    {
+        Console.WriteLine("Pending Orders:");
+        PrintOrders(State.ordered);
+    }
+
+    public void PrintPaidOrders()
+    {
+        Console.WriteLine("Paid Orders:");
+        PrintOrders(State.paid);
+    }
+
     public void PrintOrders(State state)
     {
         var orders = _orderServices.GetAll(state);
-        Console.WriteLine(state == State.ordered ? "Pending Orders:" : "Paid Orders");
         ItemsLogger<OrderDTO>.PrintItems(orders);
     }
 
     public void AskForOption()
     {
         string chosenOption = AskForString("Introduce an option");
-        if (exit) { return; }
+        if (_exit) { return; }
         switch (chosenOption)
         {
             case "1":
@@ -108,13 +143,13 @@ public class ConsoleLogger
         }
     }
 
-    public static int AskForInteger(string consoleText, int minValue, int maxValue)
+    public static int AskForInteger(string consoleText, List<int> allowedRange)
     {
         Console.WriteLine($"{consoleText}.");
-        Console.WriteLine($"It must be an integer between {minValue} and {maxValue}.");
+        Console.WriteLine($"It must be an integer in the range {allowedRange}.");
         while (true)
         {
-            (int validatedInput, string? error) = InputValidator.ParseInteger(Console.ReadLine() ?? "", minValue, maxValue);
+            (int validatedInput, string? error) = InputValidator.ParseInteger(Console.ReadLine() ?? "", allowedRange);
             if (error is null)
             {
                 return validatedInput;
@@ -145,10 +180,10 @@ public class ConsoleLogger
         Console.WriteLine($"{consoleText}. It must be a valid string");
         while (true)
         {
-            (string validatedInput, string? error) = InputValidator.ParseString(Console.ReadLine() ?? "");
+            (string? validatedInput, string? error) = InputValidator.ParseString(Console.ReadLine() ?? "");
             if (error is null)
             {
-                return validatedInput;
+                return validatedInput ?? string.Empty;
             }
             Console.WriteLine(error);
             Console.WriteLine("Please make sure your input is a positive integer");
@@ -157,7 +192,8 @@ public class ConsoleLogger
 
     public void Logout()
     {
-        activeUser = null;
+        _activeUser = null;
+        _exit = true;
         Console.WriteLine("Logged out");
     }
 }
