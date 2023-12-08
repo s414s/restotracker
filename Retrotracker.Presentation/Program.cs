@@ -36,5 +36,3 @@ ConsoleLogger console = new(
 );
 
 console.Run();
-
-Console.WriteLine("Finnishing!");

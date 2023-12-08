@@ -13,3 +13,8 @@ dotnet add reference path/to/ProjectA/ProjectA.csproj
 
 dotnet add package Microsoft.Extensions.DependencyInjection --version 8.0.0
 ```
+
+## TODO LIST
+- [ ] CREATE Order
+- [ ] CHANGE Order
+- [ ] REMOVE Order

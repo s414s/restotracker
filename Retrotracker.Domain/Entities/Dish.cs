@@ -14,12 +14,9 @@ public class Dish : IHasId
     }
 
     public Dish() { }
-
     public Dish(string name, decimal price)
     {
         Name = name;
         Price = price;
     }
-
-    public override string ToString() => $"Name {Name}, Price: {Price}, Calories: {Calories}";
 }

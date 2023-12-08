@@ -3,7 +3,7 @@ using Retrotracker.Domain;
 namespace Retrotracker.Application;
 public class OrderDTO
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = string.Empty;
     public State State { get; set; }
     public DateTime Date { get; set; }
     public int TableNumber { get; set; }
@@ -19,7 +19,7 @@ public class OrderDTO
         };
     }
 
-    public OrderDTO MapFromDomainEntity(Order order)
+    public static OrderDTO MapFromDomainEntity(Order order)
     {
         return new OrderDTO
         {
@@ -29,4 +29,5 @@ public class OrderDTO
             TableNumber = order.TableNumber,
         };
     }
+    public override string ToString() => $"State {State} - Table: {TableNumber} - Date: {Date}";
 }

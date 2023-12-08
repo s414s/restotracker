@@ -25,6 +25,4 @@ public class Order : IHasId
         Dishes = dishes;
         Author = author;
     }
-
-    public override string ToString() => $"State {State}, Table: {TableNumber}, Date: {Date}, Author: {Author}";
 }

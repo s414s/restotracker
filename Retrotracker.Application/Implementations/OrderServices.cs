@@ -21,7 +21,7 @@ public class OrderServices : IOrderServices
         throw new NotImplementedException();
     }
 
-    public List<OrderDTO> GetPending()
+    public List<OrderDTO> GetAll(State state)
     {
         throw new NotImplementedException();
     }

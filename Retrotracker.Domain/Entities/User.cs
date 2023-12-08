@@ -18,7 +18,6 @@ public class User : IHasId
     }
 
     public User() { }
-
     public User(string name, string surname, string password)
     {
         Id = new Guid().ToString();
@@ -26,6 +25,4 @@ public class User : IHasId
         Surname = surname;
         Password = password;
     }
-
-    public override string ToString() => $"User Id:{Id}, Name: {Name}";
 }
