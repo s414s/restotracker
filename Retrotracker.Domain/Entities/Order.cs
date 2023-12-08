@@ -4,7 +4,7 @@ namespace Retrotracker.Domain;
 public class Order : IHasId
 {
     public string Id { get; set; } = new Guid().ToString();
-    public State State { get; set; } = State.Ordered;
+    public State State { get; set; } = State.ordered;
     public List<Dish> Dishes { get; set; } = new List<Dish>();
     public DateTime Date { get; set; } = DateTime.Now;
     public int TableNumber { get; set; }

@@ -7,6 +7,7 @@ public class User : IHasId
     public string Name { get; set; } = string.Empty;
     public string Surname { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
+    public Role Role { get; set; } = Role.worker;
     [JsonIgnore]
     public string Username
     {
@@ -15,8 +16,6 @@ public class User : IHasId
             return $"{Name.ToLower()}{Surname.ToLower()}";
         }
     }
-    public Role Role { get; set; }
-    public DateTime LastLogin { get; set; }
 
     public User() { }
 
@@ -28,5 +27,5 @@ public class User : IHasId
         Password = password;
     }
 
-    public override string ToString() => $"User Id:{Id}, Name: {Name}, Last logged on: {LastLogin}";
+    public override string ToString() => $"User Id:{Id}, Name: {Name}";
 }

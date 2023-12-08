@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "Id": "7a9b3b45-64e4-4d9e-a55b-012345678901",
+        "Name": "Apple",
+        "UnitOfMeasurement": "Piece",
+        "Calories": 95
+    },
+    {
+        "Id": "f7eac625-1f25-4d9a-8837-987654321098",
+        "Name": "Banana",
+        "UnitOfMeasurement": "Piece",
+        "Calories": 105
+    },
+    {
+        "Id": "e6bcabf4-f0ac-4e96-9a97-876543210987",
+        "Name": "Carrot",
+        "UnitOfMeasurement": "Piece",
+        "Calories": 41
+    },
+    {
+        "Id": "d5a89c73-2f08-4d62-8e10-765432109876",
+        "Name": "Yogurt",
+        "UnitOfMeasurement": "Cup",
+        "Calories": 150
+    }
+]
