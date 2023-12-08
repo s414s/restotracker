@@ -10,7 +10,6 @@ public class ConsoleLogger
     private readonly Dictionary<int, Functionality> _mappedFunctions = new();
     private bool _exit;
     private UserDTO? _activeUser;
-
     public ConsoleLogger(IUserServices userServices, IOrderServices orderServices, IDishServices dishServices)
     {
         _userServices = userServices;
@@ -31,22 +30,20 @@ public class ConsoleLogger
             if (_activeUser is null)
             {
                 PrintSignInScreen();
+                continue;
             }
-            else
-            {
-                PrintMainScreen(_activeUser.Role);
-            }
+            PrintMainScreen(_activeUser.Role);
         }
         while (!_exit);
     }
 
-    public void PrintSignInScreen()
+    private void PrintSignInScreen()
     {
         List<int> options = new() { 1, 9 };
         AskForOption(options);
     }
 
-    public void PrintMainScreen(Role role)
+    private void PrintMainScreen(Role role)
     {
         List<int> options;
         if (role == Role.admin)
@@ -60,7 +57,7 @@ public class ConsoleLogger
         AskForOption(options);
     }
 
-    public void AskForOption(List<int> functions)
+    private void AskForOption(List<int> functions)
     {
         Console.WriteLine("Choose one of the available options:");
         foreach (var key in functions)
@@ -68,17 +65,15 @@ public class ConsoleLogger
             if (_mappedFunctions.TryGetValue(key, out Functionality? function))
             {
                 Console.WriteLine($"{key}.- {function}");
+                continue;
             }
-            else
-            {
-                Console.WriteLine($"Key {key} not found");
-            }
+            Console.WriteLine($"Key {key} not found");
         }
         int chosenOption = AskForInteger("Introduce an option", functions);
         _mappedFunctions[chosenOption].Execute();
     }
 
-    public void AuthenticateUser()
+    private void AuthenticateUser()
     {
         Console.WriteLine("Authenticate your user");
         while (true)
@@ -96,25 +91,25 @@ public class ConsoleLogger
         }
     }
 
-    public void PrintPendingOrders()
+    private void PrintPendingOrders()
     {
         Console.WriteLine("Pending Orders:");
         PrintOrders(State.ordered);
     }
 
-    public void PrintPaidOrders()
+    private void PrintPaidOrders()
     {
         Console.WriteLine("Paid Orders:");
         PrintOrders(State.paid);
     }
 
-    public void PrintOrders(State state)
+    private void PrintOrders(State state)
     {
         var orders = _orderServices.GetAll(state);
         ItemsLogger<OrderDTO>.PrintItems(orders);
     }
 
-    public static int AskForInteger(string consoleText, List<int> allowedRange)
+    private static int AskForInteger(string consoleText, List<int> allowedRange)
     {
         Console.WriteLine($"{consoleText}.");
         Console.WriteLine($"It must be an integer in the range {allowedRange}.");
@@ -130,7 +125,7 @@ public class ConsoleLogger
         }
     }
 
-    public static decimal AskForDecimal(string consoleText, int minValue)
+    private static decimal AskForDecimal(string consoleText, int minValue)
     {
         Console.WriteLine($"{consoleText}.");
         Console.WriteLine($"It must be a decimal number greater or equal to {minValue}.");
@@ -146,7 +141,7 @@ public class ConsoleLogger
         }
     }
 
-    public static string AskForString(string consoleText)
+    private static string AskForString(string consoleText)
     {
         Console.WriteLine($"{consoleText}. It must be a valid string");
         while (true)
@@ -161,13 +156,13 @@ public class ConsoleLogger
         }
     }
 
-    public void Logout()
+    private void Logout()
     {
         _activeUser = null;
         Console.WriteLine("Logged out");
     }
 
-    public void Exit()
+    private void Exit()
     {
         _exit = true;
         Console.WriteLine("Good Bye");
