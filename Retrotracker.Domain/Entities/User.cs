@@ -3,10 +3,10 @@ using System.Text.Json.Serialization;
 namespace Retrotracker.Domain;
 public class User : IHasId
 {
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public string Password { get; set; }
+    public string Id { get; set; } = new Guid().ToString();
+    public string Name { get; set; } = string.Empty;
+    public string Surname { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
     [JsonIgnore]
     public string Username
     {
@@ -28,9 +28,5 @@ public class User : IHasId
         Password = password;
     }
 
-    public override string ToString()
-    {
-        return $"User Id:{Id}, Name: {Name}, Last logged on: {LastLogin}";
-    }
-
+    public override string ToString() => $"User Id:{Id}, Name: {Name}, Last logged on: {LastLogin}";
 }

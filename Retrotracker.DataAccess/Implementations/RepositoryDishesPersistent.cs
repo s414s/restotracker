@@ -57,7 +57,11 @@ public class RepositoryDishesPersistent : IRepository<Dish>
 
     public void SaveChanges()
     {
-        var options = new JsonSerializerOptions { WriteIndented = true };
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        };
         List<DishDataEntity> data = _allItems.Select(x => DishDataEntity.MapFromDomainEntity(x)).ToList() ?? new();
         var payloadAsString = JsonSerializer.Serialize(data, options);
         File.WriteAllText(_path, payloadAsString);

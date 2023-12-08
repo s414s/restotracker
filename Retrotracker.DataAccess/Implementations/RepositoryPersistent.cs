@@ -55,7 +55,11 @@ public class RepositoryPersistent<T> where T : class, IHasId
 
     public virtual void SaveChanges()
     {
-        var options = new JsonSerializerOptions { WriteIndented = true };
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        };
         var payloadAsString = JsonSerializer.Serialize(_allItems, options);
         File.WriteAllText(_path, payloadAsString);
     }

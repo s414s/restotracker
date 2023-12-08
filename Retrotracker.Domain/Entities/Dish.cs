@@ -21,9 +21,5 @@ public class Dish : IHasId
         Price = price;
     }
 
-    public override string ToString()
-    {
-        return $"Name {Name}, Price: {Price}, Calories: {Calories}";
-    }
-
+    public override string ToString() => $"Name {Name}, Price: {Price}, Calories: {Calories}";
 }

@@ -8,7 +8,7 @@ public class Order : IHasId
     public List<Dish> Dishes { get; set; } = new List<Dish>();
     public DateTime Date { get; set; } = DateTime.Now;
     public int TableNumber { get; set; }
-    public User Author { get; set; }
+    public User Author { get; set; } = new();
     [JsonIgnore]
     public decimal TotalPrice
     {
@@ -26,8 +26,5 @@ public class Order : IHasId
         Author = author;
     }
 
-    public override string ToString()
-    {
-        return $"State {State}, Table: {TableNumber}, Date: {Date}, Author: {Author}";
-    }
+    public override string ToString() => $"State {State}, Table: {TableNumber}, Date: {Date}, Author: {Author}";
 }
