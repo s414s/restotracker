@@ -19,7 +19,7 @@ public class ConsoleLogger
         _mappedFunctions.Add(1, new Functionality { Description = "Sign In", Function = AuthenticateUser });
         _mappedFunctions.Add(2, new Functionality { Description = "Print pending orders", Function = PrintPendingOrders });
         _mappedFunctions.Add(3, new Functionality { Description = "Print paid orders", Function = PrintPaidOrders });
-        _mappedFunctions.Add(4, new Functionality { Description = "Create a new order", Function = PrintNewOrder });
+        _mappedFunctions.Add(4, new Functionality { Description = "Create a new order", Function = PrintAddNewOrder });
         _mappedFunctions.Add(5, new Functionality { Description = "Delete an order", Function = PrintDeleteOrder });
         _mappedFunctions.Add(6, new Functionality { Description = "Modify the state of an open order", Function = PrintModifyOrderState });
         _mappedFunctions.Add(7, new Functionality { Description = "Sign Out", Function = Logout });
@@ -100,7 +100,7 @@ public class ConsoleLogger
         PrintOrders("paid");
     }
 
-    private void PrintNewOrder()
+    private void PrintAddNewOrder()
     {
         List<DishDTO> allDishes = _dishServices.GetAll();
         ItemsLogger<DishDTO>.PrintItems(allDishes);
@@ -115,7 +115,6 @@ public class ConsoleLogger
                 selectedDishes.Add(selectedDish);
             }
         }
-
         int selectedTable = ValueSeeker.AskForInteger("Now select the table:", _tables);
         var result = _orderServices.Create(selectedDishes, selectedTable);
         Console.WriteLine(result ? "Order Created Successfully" : "Order Could not be Created");
