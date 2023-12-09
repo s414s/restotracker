@@ -26,7 +26,7 @@ public class OrderServices : IOrderServices
             _ordersRepo.SaveChanges();
             return true;
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             // TODO - log error
             return false;
@@ -43,7 +43,7 @@ public class OrderServices : IOrderServices
             _ordersRepo.SaveChanges();
             return true;
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             // TODO - log error
             return false;
@@ -56,7 +56,7 @@ public class OrderServices : IOrderServices
         {
             return _ordersRepo.Delete(order.MapToDomainEntity());
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             // TODO - log error
             return false;
@@ -75,7 +75,7 @@ public class OrderServices : IOrderServices
             return allOrders.Select(x => OrderDTO.MapFromDomainEntity(x)).ToList();
 
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             // TODO - log error
             return new List<OrderDTO>();
