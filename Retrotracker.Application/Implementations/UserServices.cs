@@ -5,7 +5,6 @@ namespace Retrotracker.Application;
 public class UserServices : IUserServices
 {
     private readonly IRepository<User> _usersRepo;
-
     public UserServices(IRepository<User> usersRepo)
     {
         _usersRepo = usersRepo;
