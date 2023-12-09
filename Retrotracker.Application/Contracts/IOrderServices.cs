@@ -6,5 +6,5 @@ public interface IOrderServices
 {
     bool Create(List<DishDTO> dishes, int table);
     List<OrderDTO> GetAll(string? state);
-    bool ChangeState(string state);
+    bool UpdateState(string orderId, string state);
 }

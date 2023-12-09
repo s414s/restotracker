@@ -11,7 +11,7 @@ public class OrderServices : IOrderServices
         _ordersRepo = ordersRepo;
     }
 
-    public bool ChangeState(string state)
+    public bool UpdateState(string orderId, string state)
     {
         throw new NotImplementedException();
     }
