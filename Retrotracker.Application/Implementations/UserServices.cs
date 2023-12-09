@@ -35,6 +35,7 @@ public class UserServices : IUserServices
         }
         catch (Exception)
         {
+            // TODO - log error
             return false;
         }
     }
@@ -49,7 +50,8 @@ public class UserServices : IUserServices
         }
         catch (Exception)
         {
-            throw;
+            // TODO - log error
+            return new UserDTO();
         }
     }
 
@@ -66,6 +68,7 @@ public class UserServices : IUserServices
         }
         catch (Exception)
         {
+            // TODO - log error
             return null;
         }
     }

@@ -119,7 +119,7 @@ public class ConsoleLogger
 
         int selectedTable = AskForInteger("Now select the table:", _tables);
         _orderServices.Create(selectedDishes, selectedTable);
-        Console.WriteLine("Orders Created Correctly");
+        Console.WriteLine("Order Create Correctly");
     }
 
     private void PrintDeleteOrder()
@@ -127,12 +127,15 @@ public class ConsoleLogger
         List<OrderDTO> allOrders = _orderServices.GetAll(null);
         ItemsLogger<OrderDTO>.PrintItems(allOrders);
         var indexes = allOrders.Select((x, i) => i + 1).ToList() ?? new List<int>();
-
         int chosenOrder = AskForInteger("Choose which order you want to delete", indexes);
+        _orderServices.Delete(allOrders[chosenOrder]);
+        Console.WriteLine("Order Deleted Correctly");
     }
 
     private void PrintModifyOrder()
     {
+        List<OrderDTO> allOrders = _orderServices.GetAll("ordered");
+        ItemsLogger<OrderDTO>.PrintItems(allOrders);
     }
 
     private void PrintOrders(string state)

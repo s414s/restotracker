@@ -23,6 +23,13 @@ public class DishServices : IDishServices
 
     public List<DishDTO> GetAll()
     {
-        return _dishesRepo.GetAll().Select(x => DishDTO.MapFromDomainEntity(x)).ToList();
+        try
+        {
+            return _dishesRepo.GetAll().Select(x => DishDTO.MapFromDomainEntity(x)).ToList();
+        }
+        catch (System.Exception)
+        {
+            return new List<DishDTO>();
+        }
     }
 }
