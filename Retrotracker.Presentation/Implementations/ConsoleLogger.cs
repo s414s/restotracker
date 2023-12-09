@@ -49,8 +49,8 @@ public class ConsoleLogger
     private void PrintMainScreen(string role)
     {
         List<int> options = role == "admin"
-            ? new() { 2, 3, 8, 9 }
-            : new() { 2, 3, 8, 9 };
+            ? new() { 2, 3, 4, 5, 6, 7, 8, 9 }
+            : new() { 2, 3, 4, 5, 6, 7, 8, 9 };
         AskForOption(options);
     }
 
@@ -105,7 +105,6 @@ public class ConsoleLogger
         List<DishDTO> allDishes = _dishServices.GetAll();
         ItemsLogger<DishDTO>.PrintItems(allDishes);
         List<DishDTO> selectedDishes = new();
-
         var indexes = allDishes.Select((x, i) => i + 1).ToList() ?? new List<int>();
         List<int> selectedIndexes = ValueSeeker.AskForIntegers("Select the dishes for this order:", indexes);
         foreach (var index in selectedIndexes)
