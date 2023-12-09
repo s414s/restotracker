@@ -14,7 +14,6 @@ public class Order : IHasId
     [JsonPropertyName("tableNumber")]
     public int TableNumber { get; set; }
     [JsonPropertyName("author")]
-    public User Author { get; set; } = new();
     [JsonIgnore]
     public decimal TotalPrice
     {
@@ -25,10 +24,9 @@ public class Order : IHasId
     }
 
     public Order() { }
-    public Order(int tableNumber, List<Dish> dishes, User author)
+    public Order(List<Dish> dishes, int tableNumber)
     {
         TableNumber = tableNumber;
         Dishes = dishes;
-        Author = author;
     }
 }

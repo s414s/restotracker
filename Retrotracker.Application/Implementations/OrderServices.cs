@@ -16,13 +16,21 @@ public class OrderServices : IOrderServices
         throw new NotImplementedException();
     }
 
-    public bool Create()
+    public bool Create(List<DishDTO> dishes, int table)
     {
-        throw new NotImplementedException();
+        var allDishes = dishes.Select(x => x.MapToDomainEntity()).ToList();
+        var newOrder = new Order(allDishes, table);
+        _ordersRepo.Add(newOrder);
+        return true;
     }
 
-    public List<OrderDTO> GetAll(string state)
+    public List<OrderDTO> GetAll(string? state)
     {
-        throw new NotImplementedException();
+        var allOrders = _ordersRepo.GetAll();
+        if (state is not null)
+        {
+            allOrders = allOrders.Where(x => x.State == state);
+        }
+        return allOrders.Select(x => OrderDTO.MapFromDomainEntity(x)).ToList();
     }
 }

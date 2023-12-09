@@ -4,7 +4,7 @@ namespace Retrotracker.Application;
 
 public interface IOrderServices
 {
-    bool Create();
-    List<OrderDTO> GetAll(string state);
+    bool Create(List<DishDTO> dishes, int table);
+    List<OrderDTO> GetAll(string? state);
     bool ChangeState(string state);
 }

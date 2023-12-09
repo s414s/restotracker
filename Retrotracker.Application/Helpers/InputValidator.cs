@@ -12,6 +12,22 @@ public class InputValidator
         return (0, "Invalid input");
     }
 
+    public static (List<int> validatedInts, string? error) ParseIntegers(string userInput, List<int> allowedRange)
+    {
+        var inputValues = userInput.Split(",");
+        var output = new List<int>();
+        foreach (var input in inputValues)
+        {
+            if (int.TryParse(input, out int validatedInt) && allowedRange.Contains(validatedInt))
+            {
+                output.Add(validatedInt);
+                continue;
+            }
+            return (output, $"There input {input} is not valid");
+        }
+        return (output, null);
+    }
+
     public static (decimal validatedInput, string? error) ParseDecimal(string userInput, int minimumValue)
     {
         if (decimal.TryParse(userInput, out decimal validatedInput) && validatedInput >= minimumValue)
