@@ -15,8 +15,7 @@ public static class ValueSeeker
             {
                 return validatedInput;
             }
-            Console.WriteLine(error);
-            Console.WriteLine("Please make sure your input is correct");
+            Console.WriteLine(error, "Please make sure your input is correct");
         }
     }
 
@@ -32,8 +31,7 @@ public static class ValueSeeker
             {
                 return validatedInput;
             }
-            Console.WriteLine(error);
-            Console.WriteLine("Please make sure your input is correct");
+            Console.WriteLine(error, "Please make sure your input is correct");
         }
     }
 
@@ -48,8 +46,7 @@ public static class ValueSeeker
             {
                 return validatedInput;
             }
-            Console.WriteLine(error);
-            Console.WriteLine("Please make sure your input is correct");
+            Console.WriteLine(error, "Please make sure your input is correct");
         }
     }
 
@@ -63,8 +60,7 @@ public static class ValueSeeker
             {
                 return validatedInput ?? string.Empty;
             }
-            Console.WriteLine(error);
-            Console.WriteLine("Please make sure your input is a positive integer");
+            Console.WriteLine(error, "Please make sure your input is a positive integer");
         }
     }
 }
