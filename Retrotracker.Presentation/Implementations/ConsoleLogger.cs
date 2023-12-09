@@ -15,12 +15,13 @@ public class ConsoleLogger
         _userServices = userServices;
         _orderServices = orderServices;
         _dishServices = dishServices;
-
         _tables = new() { 1, 2, 3, 4, 5 };
         _mappedFunctions.Add(1, new Functionality { Description = "Sign In", Function = AuthenticateUser });
         _mappedFunctions.Add(2, new Functionality { Description = "Print pending orders", Function = PrintPendingOrders });
         _mappedFunctions.Add(3, new Functionality { Description = "Print paid orders", Function = PrintPaidOrders });
         _mappedFunctions.Add(4, new Functionality { Description = "Create a new order", Function = PrintNewOrder });
+        _mappedFunctions.Add(5, new Functionality { Description = "Delete an order", Function = PrintDeleteOrder });
+        _mappedFunctions.Add(6, new Functionality { Description = "Modify an open order", Function = PrintModifyOrderState });
         _mappedFunctions.Add(8, new Functionality { Description = "Sign Out", Function = Logout });
         _mappedFunctions.Add(9, new Functionality { Description = "Exit", Function = Exit });
     }
@@ -117,8 +118,14 @@ public class ConsoleLogger
         }
 
         int selectedTable = ValueSeeker.AskForInteger("Now select the table:", _tables);
-        _orderServices.Create(selectedDishes, selectedTable);
-        Console.WriteLine("Order Create Correctly");
+        var result = _orderServices.Create(selectedDishes, selectedTable);
+        if (result)
+        {
+            Console.WriteLine("Order Created Successfully");
+            return;
+        }
+        Console.WriteLine("Order Could not be Created");
+        return;
     }
 
     private void PrintDeleteOrder()
@@ -126,15 +133,34 @@ public class ConsoleLogger
         List<OrderDTO> allOrders = _orderServices.GetAll(null);
         ItemsLogger<OrderDTO>.PrintItems(allOrders);
         var indexes = allOrders.Select((x, i) => i + 1).ToList() ?? new List<int>();
-        int chosenOrder = ValueSeeker.AskForInteger("Choose which order you want to delete", indexes);
-        _orderServices.Delete(allOrders[chosenOrder]);
-        Console.WriteLine("Order Deleted Correctly");
+        int chosenOrderIndex = ValueSeeker.AskForInteger("Choose which order you want to delete", indexes);
+
+        var result = _orderServices.Delete(allOrders[chosenOrderIndex]);
+        if (result)
+        {
+            Console.WriteLine("Order Successfully Deleted");
+            return;
+        }
+        Console.WriteLine("Order Unsuccessfully Deleted");
+        return;
     }
 
-    private void PrintModifyOrder()
+    private void PrintModifyOrderState()
     {
         List<OrderDTO> allOrders = _orderServices.GetAll("ordered");
         ItemsLogger<OrderDTO>.PrintItems(allOrders);
+        var indexes = allOrders.Select((x, i) => i + 1).ToList() ?? new List<int>();
+        int chosenOrderIndex = ValueSeeker.AskForInteger("Choose which order you want to modify", indexes);
+        var chosenOrder = allOrders[chosenOrderIndex];
+        var newState = chosenOrder.State == "ordered" ? "paid" : "ordered";
+        var result = _orderServices.UpdateState(chosenOrder, newState);
+        if (result)
+        {
+            Console.WriteLine("Order Successfully Modified");
+            return;
+        }
+        Console.WriteLine("Order Unsuccessfully Modified");
+        return;
     }
 
     private void PrintOrders(string state)
