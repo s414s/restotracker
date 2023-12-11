@@ -6,7 +6,7 @@ public class MenuPrinter: IMenuPrinter
     private readonly IUserServices _userServices;
     private readonly IOrderServices _orderServices;
     private readonly IDishServices _dishServices;
-    private readonly Dictionary<int, Functionality> _mappedFunctions = new();
+    private readonly List<Functionality> _functions = new();
     private bool _exit;
     private readonly List<int> _tables;
     private UserDTO? _activeUser;
@@ -17,14 +17,14 @@ public class MenuPrinter: IMenuPrinter
         _dishServices = dishServices;
         _tables = new() { 1, 2, 3, 4, 5 };
 
-        _mappedFunctions.Add(1, new Functionality { Description = "Sign In", Function = AuthenticateUser });
-        _mappedFunctions.Add(2, new Functionality { Description = "Print pending orders", Function = PrintPendingOrders });
-        _mappedFunctions.Add(3, new Functionality { Description = "Print paid orders", Function = PrintPaidOrders });
-        _mappedFunctions.Add(4, new Functionality { Description = "Create a new order", Function = PrintAddNewOrder });
-        _mappedFunctions.Add(5, new Functionality { Description = "Delete an order", Function = PrintDeleteOrder });
-        _mappedFunctions.Add(6, new Functionality { Description = "Modify the state of an open order", Function = PrintModifyOrderState });
-        _mappedFunctions.Add(7, new Functionality { Description = "Sign Out", Function = Logout });
-        _mappedFunctions.Add(8, new Functionality { Description = "Exit", Function = Exit });
+        _functions.Add(new Functionality { Key = 1, Description = "Sign In", Function = AuthenticateUser });
+        _functions.Add(new Functionality { Key = 2, Description = "Print pending orders", Function = PrintPendingOrders });
+        _functions.Add(new Functionality { Key = 3, Description = "Print paid orders", Function = PrintPaidOrders });
+        _functions.Add(new Functionality { Key = 4, Description = "Create a new order", Function = PrintAddNewOrder });
+        _functions.Add(new Functionality { Key = 5, Description = "Delete an order", Function = PrintDeleteOrder });
+        _functions.Add(new Functionality { Key = 6, Description = "Modify the state of an open order", Function = PrintModifyOrderState });
+        _functions.Add(new Functionality { Key = 7, Description = "Sign Out", Function = Logout });
+        _functions.Add(new Functionality { Key = 8, Description = "Exit", Function = Exit });
     }
 
     public void Run()
@@ -43,15 +43,15 @@ public class MenuPrinter: IMenuPrinter
 
     private void PrintSignInScreen()
     {
-        List<int> options = new() { 1, 9 };
+        List<int> options = new() { 1, 8 };
         AskForOption(options);
     }
 
     private void PrintMainScreen(string role)
     {
         List<int> options = role == "admin"
-            ? new() { 2, 3, 4, 5, 6, 7, 8, 9 }
-            : new() { 2, 3, 4, 5, 6, 7, 8, 9 };
+            ? new() { 2, 3, 4, 5, 6, 7, 8 }
+            : new() { 2, 3, 4, 5, 6, 7, 8 };
         AskForOption(options);
     }
 
@@ -60,15 +60,16 @@ public class MenuPrinter: IMenuPrinter
         Console.WriteLine("OPTIONS");
         foreach (var key in functions)
         {
-            if (_mappedFunctions.TryGetValue(key, out Functionality? function))
+            var functionality = _functions.FirstOrDefault(x => x.Key == key);
+            if(functionality is not null)
             {
-                Console.WriteLine($"{key}.- {function}");
+                Console.WriteLine($"{key}.- {functionality.Description}");
                 continue;
             }
             Console.WriteLine($"Key {key} not found");
         }
         int chosenOption = ValueSeeker.AskForInteger("Choose an option", functions);
-        _mappedFunctions[chosenOption].Execute();
+        ExecuteFunction(chosenOption);
     }
 
     private void AuthenticateUser()
@@ -93,6 +94,11 @@ public class MenuPrinter: IMenuPrinter
     {
         Console.WriteLine("Pending Orders:");
         PrintOrders("ordered");
+    }
+
+    private void ExecuteFunction(int key)
+    {
+        _functions.FirstOrDefault(x => x.Key == key)?.Execute();
     }
 
     private void PrintPaidOrders()
