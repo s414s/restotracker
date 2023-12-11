@@ -15,16 +15,17 @@ public class MenuPrinter: IMenuPrinter
         _userServices = userServices;
         _orderServices = orderServices;
         _dishServices = dishServices;
+
         _tables = new() { 1, 2, 3, 4, 5 };
         _functions = new(){
-            new Functionality { Key = 1, Description = "Sign In", Function = AuthenticateUser },
-            new Functionality { Key = 2, Description = "Print pending orders", Function = PrintPendingOrders },
-            new Functionality { Key = 3, Description = "Print paid orders", Function = PrintPaidOrders },
-            new Functionality { Key = 4, Description = "Create a new order", Function = PrintAddNewOrder },
-            new Functionality { Key = 5, Description = "Delete an order", Function = PrintDeleteOrder },
-            new Functionality { Key = 6, Description = "Modify the state of an open order", Function = PrintModifyOrderState },
-            new Functionality { Key = 7, Description = "Sign Out", Function = Logout },
-            new Functionality { Key = 8, Description = "Exit", Function = Exit }
+            new () { Key = 1, Description = "Sign In", Function = AuthenticateUser },
+            new () { Key = 2, Description = "Print pending orders", Function = PrintPendingOrders },
+            new () { Key = 3, Description = "Print paid orders", Function = PrintPaidOrders },
+            new () { Key = 4, Description = "Create a new order", Function = PrintAddNewOrder },
+            new () { Key = 5, Description = "Delete an order", Function = PrintDeleteOrder },
+            new () { Key = 6, Description = "Modify the state of an open order", Function = PrintModifyOrderState },
+            new () { Key = 7, Description = "Sign Out", Function = Logout },
+            new () { Key = 8, Description = "Exit", Function = Exit }
         };
     }
 
