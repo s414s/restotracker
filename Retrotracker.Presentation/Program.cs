@@ -21,7 +21,7 @@ var serviceCollection = new ServiceCollection();
 // Repositories
 serviceCollection.AddSingleton<IRepository<User>, RepositoryUsersPersistent>();
 serviceCollection.AddSingleton<IRepository<Order>, RepositoryOrdersPersistent>();
-serviceCollection.AddSingleton<IRepository<Ingredient>, RepositoryIngredientsPersistent>();
+serviceCollection.AddSingleton<IRepositoryIngredients, RepositoryIngredientsPersistent>();
 serviceCollection.AddSingleton<IRepository<Dish>, RepositoryDishesPersistent>();
 
 // Services
@@ -29,23 +29,32 @@ serviceCollection.AddTransient<IUserServices, UserServices>();
 serviceCollection.AddTransient<IOrderServices, OrderServices>();
 serviceCollection.AddTransient<IDishServices, DishServices>();
 
+serviceCollection.AddTransient<IMenuPrinter, MenuPrinter>();
+
 var serviceProvider = serviceCollection.BuildServiceProvider();
 
-// Resolve an instance of IUserServices
-// var consoleLogger = serviceProvider.GetService<IBankAccountService>();
+// Resolve an instance of IConsoleLogger
+var menuPrinter = serviceProvider.GetService<IMenuPrinter>();
+menuPrinter?.Run();
 
 Console.WriteLine("Dependency injections done!");
 
 // TODO - preguntar si esto iria en capa CrossCutting
 // Manual dependency injection 
-RepositoryUsersPersistent repoUsers = new();
-RepositoryOrdersPersistent repoOrders = new();
-RepositoryIngredientsPersistent repoIngredients = new();
-RepositoryDishesPersistent repoDishes = new(repoIngredients);
 
-UserServices userServices = new(repoUsers);
-OrderServices orderServices = new(repoOrders);
-DishServices dishServices = new(repoDishes);
+// RepositoryUsersPersistent repoUsers = new();
+// RepositoryOrdersPersistent repoOrders = new();
+// RepositoryIngredientsPersistent repoIngredients = new();
+// RepositoryDishesPersistent repoDishes = new(repoIngredients);
 
-ConsoleLogger console = new( userServices, orderServices, dishServices);
-console.Run();
+// UserServices userServices = new(repoUsers);
+// OrderServices orderServices = new(repoOrders);
+// DishServices dishServices = new(repoDishes);
+
+// MenuPrinter menuPrinter = new(
+//     userServices,
+//     orderServices,
+//     dishServices
+// );
+
+// menuPrinter.Run();

@@ -1,6 +1,6 @@
 namespace Retrotracker.Presentation;
 
-public interface IConsoleLogger
+public interface IMenuPrinter
 {
     void Run();
 }

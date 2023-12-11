@@ -1,7 +1,7 @@
 using Retrotracker.Application;
 
 namespace Retrotracker.Presentation;
-public class ConsoleLogger: IConsoleLogger
+public class MenuPrinter: IMenuPrinter
 {
     private readonly IUserServices _userServices;
     private readonly IOrderServices _orderServices;
@@ -10,12 +10,13 @@ public class ConsoleLogger: IConsoleLogger
     private bool _exit;
     private readonly List<int> _tables;
     private UserDTO? _activeUser;
-    public ConsoleLogger(IUserServices userServices, IOrderServices orderServices, IDishServices dishServices)
+    public MenuPrinter(IUserServices userServices, IOrderServices orderServices, IDishServices dishServices)
     {
         _userServices = userServices;
         _orderServices = orderServices;
         _dishServices = dishServices;
         _tables = new() { 1, 2, 3, 4, 5 };
+
         _mappedFunctions.Add(1, new Functionality { Description = "Sign In", Function = AuthenticateUser });
         _mappedFunctions.Add(2, new Functionality { Description = "Print pending orders", Function = PrintPendingOrders });
         _mappedFunctions.Add(3, new Functionality { Description = "Print paid orders", Function = PrintPaidOrders });

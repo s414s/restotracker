@@ -17,6 +17,7 @@ public class DishServices : IDishServices
         }
         catch (Exception)
         {
+            // TODO - add log
             return new List<DishDTO>();
         }
     }
