@@ -4,9 +4,9 @@ namespace Retrotracker.Application;
 
 public class UserDTO
 {
-    public string Name { get; set; }
-    public string Surname { get; set; }
-    public Role Role { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Surname { get; set; } = string.Empty;
+    public string Role { get; set; } = string.Empty;
 
     public User MapToDomainEntity()
     {
@@ -28,4 +28,5 @@ public class UserDTO
         };
     }
 
+    public override string ToString() => $"Name {Name}, Surname: {Surname}, Role: {Role}";
 }

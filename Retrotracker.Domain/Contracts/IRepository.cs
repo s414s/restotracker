@@ -7,4 +7,5 @@ public interface IRepository<T> where T : class
     T Add(T entity);
     bool Delete(T entity);
     T Update(T entity);
+    void SaveChanges();
 }

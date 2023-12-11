@@ -10,3 +10,8 @@ C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.App
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\obj\Debug\net7.0\refint\Retrotracker.Application.dll
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\obj\Debug\net7.0\Retrotracker.Application.pdb
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\obj\Debug\net7.0\ref\Retrotracker.Application.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\bin\Debug\net7.0\Retrotracker.DataAccess.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\bin\Debug\net7.0\Retrotracker.Domain.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\bin\Debug\net7.0\Retrotracker.DataAccess.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\bin\Debug\net7.0\Retrotracker.Domain.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Application\obj\Debug\net7.0\Retrotracker.Application.csproj.CopyComplete

@@ -1,12 +1,20 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class Order : IHasId
 {
+    [JsonPropertyName("id")]
     public string Id { get; set; } = new Guid().ToString();
-    public State State { get; set; } = State.Ordered;
+    [JsonPropertyName("state")]
+    public string State { get; set; } = "ordered";
+    [JsonPropertyName("dishes")]
     public List<Dish> Dishes { get; set; } = new List<Dish>();
+    [JsonPropertyName("date")]
     public DateTime Date { get; set; } = DateTime.Now;
+    [JsonPropertyName("tableNumber")]
     public int TableNumber { get; set; }
-    public User Author { get; set; }
+    [JsonPropertyName("author")]
+    [JsonIgnore]
     public decimal TotalPrice
     {
         get
@@ -16,15 +24,9 @@ public class Order : IHasId
     }
 
     public Order() { }
-    public Order(int tableNumber, List<Dish> dishes, User author)
+    public Order(List<Dish> dishes, int tableNumber)
     {
         TableNumber = tableNumber;
         Dishes = dishes;
-        Author = author;
-    }
-
-    public override string ToString()
-    {
-        return $"State {State}, Table: {TableNumber}, Date: {Date}, Author: {Author}";
     }
 }

@@ -1,16 +1,24 @@
 ﻿using Retrotracker.Domain;
 
 namespace Retrotracker.Application;
-
 public class DishServices : IDishServices
 {
-    public bool Create()
+    private readonly IRepository<Dish> _dishesRepo;
+    public DishServices(IRepository<Dish> dishesRepo)
     {
-        throw new NotImplementedException();
+        _dishesRepo = dishesRepo;
     }
 
-    public Dish Get(string id)
+    public List<DishDTO> GetAll()
     {
-        throw new NotImplementedException();
+        try
+        {
+            return _dishesRepo.GetAll().Select(x => DishDTO.MapFromDomainEntity(x)).ToList();
+        }
+        catch (Exception)
+        {
+            // TODO - add log
+            return new List<DishDTO>();
+        }
     }
 }

@@ -1,9 +1,21 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class Ingredient : IHasId
 {
-    public string Id { get; set; } = string.Empty;
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = new Guid().ToString();
+    [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
-    public int Calories { get; set; }
+    [JsonPropertyName("unitOfMeasurement")]
     public string UnitOfMeasurement { get; set; } = string.Empty;
+    [JsonPropertyName("calories")]
+    public int Calories { get; set; }
+    public Ingredient() { }
+}
+
+public class IngredientDecomposition
+{
     public decimal Quantity { get; set; }
+    public Ingredient Ingredient { get; set; } = new();
 }

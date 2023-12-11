@@ -5,7 +5,6 @@ namespace Retrotracker.Application;
 public class UserServices : IUserServices
 {
     private readonly IRepository<User> _usersRepo;
-
     public UserServices(IRepository<User> usersRepo)
     {
         _usersRepo = usersRepo;
@@ -16,6 +15,7 @@ public class UserServices : IUserServices
         try
         {
             var result = _usersRepo.Add(newUser.MapToDomainEntity());
+            _usersRepo.SaveChanges();
             return result is not null;
         }
         catch (Exception)
@@ -28,10 +28,13 @@ public class UserServices : IUserServices
     {
         try
         {
-            return _usersRepo.Delete(user.MapToDomainEntity());
+            var result = _usersRepo.Delete(user.MapToDomainEntity());
+            _usersRepo.SaveChanges();
+            return result;
         }
         catch (Exception)
         {
+            // TODO - log error
             return false;
         }
     }
@@ -41,20 +44,22 @@ public class UserServices : IUserServices
         try
         {
             _usersRepo.Update(user.MapToDomainEntity());
+            _usersRepo.SaveChanges();
             return user;
         }
         catch (Exception)
         {
-            throw;
+            // TODO - log error
+            return new UserDTO();
         }
     }
 
-    public UserDTO? SignIn(AuthUserDTO userCredentials)
+    public UserDTO? SignIn(string username, string password)
     {
         try
         {
-            var user = _usersRepo.GetByID(userCredentials.Username);
-            if (user?.Password != userCredentials.Password)
+            var user = _usersRepo.GetByID(username);
+            if (user?.Password != password)
             {
                 return null;
             }
@@ -62,6 +67,7 @@ public class UserServices : IUserServices
         }
         catch (Exception)
         {
+            // TODO - log error
             return null;
         }
     }
