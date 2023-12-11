@@ -1,4 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
+// git checkout <hash del commit> -> para viajar a otro commit anterior
+// gitk - herramienta para ver los cambios
+// fastforward vs squas commit
+// git bisec
+// git blame
+// git reflog -> te salva la vida
+// git status
+// git stash
+// git checkout -> tambien puede ser para ir a un commit anterior
+
 using Microsoft.Extensions.DependencyInjection;
 using Retrotracker.Application;
 using Retrotracker.DataAccess;
@@ -6,10 +16,8 @@ using Retrotracker.Domain;
 using Retrotracker.Presentation;
 
 var serviceCollection = new ServiceCollection();
-serviceCollection.AddTransient<IUserServices, UserServices>();
-serviceCollection.AddTransient<IOrderServices, OrderServices>();
-serviceCollection.AddTransient<IDishServices, DishServices>();
 
+// Registering services
 // Repositories
 serviceCollection.AddSingleton<IRepository<User>, RepositoryUsersPersistent>();
 serviceCollection.AddSingleton<IRepository<Order>, RepositoryOrdersPersistent>();
@@ -22,6 +30,8 @@ serviceCollection.AddTransient<IOrderServices, OrderServices>();
 serviceCollection.AddTransient<IDishServices, DishServices>();
 
 var serviceProvider = serviceCollection.BuildServiceProvider();
+
+// Resolve an instance of IUserServices
 // var consoleLogger = serviceProvider.GetService<IBankAccountService>();
 
 Console.WriteLine("Dependency injections done!");

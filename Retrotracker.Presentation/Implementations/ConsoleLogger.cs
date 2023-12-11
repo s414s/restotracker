@@ -1,7 +1,7 @@
 using Retrotracker.Application;
 
 namespace Retrotracker.Presentation;
-public class ConsoleLogger
+public class ConsoleLogger: IConsoleLogger
 {
     private readonly IUserServices _userServices;
     private readonly IOrderServices _orderServices;
