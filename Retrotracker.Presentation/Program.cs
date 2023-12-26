@@ -1,15 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// git checkout <hash del commit> -> para viajar a otro commit anterior
-// gitk - herramienta para ver los cambios
-// fastforward vs squas commit
-// git bisec
-// git blame
-// git reflog -> te salva la vida
-// git status
-// git stash
-// git checkout -> tambien puede ser para ir a un commit anterior
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Retrotracker.Application;
 using Retrotracker.DataAccess;
 using Retrotracker.Domain;
