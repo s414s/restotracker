@@ -12,6 +12,9 @@ dotnet run --project .\Retrotracker.Presentation\Retrotracker.Presentation.cspro
 dotnet add reference path/to/ProjectA/ProjectA.csproj
 
 dotnet add package Microsoft.Extensions.DependencyInjection --version 8.0.0
+
+
+dotnet run --project .\Retrotracker.Presentation\Retrotracker.Presentation.csproj
 ```
 
 ## TODO LIST
