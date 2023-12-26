@@ -25,3 +25,5 @@ docker build --rm -t new-net/cloud-retro:latest .
 docker image ls | grap cloud-retro
 
 docker run --rm -p 5000:5000 -p 5001:5001 -e ASPNET_HTTP_PORT=https://+:5001 -e ASPNETCORE_URLS=http://+:5001 new-net/cloud-retro
+
+docker run -it new-net/cloud-retro
