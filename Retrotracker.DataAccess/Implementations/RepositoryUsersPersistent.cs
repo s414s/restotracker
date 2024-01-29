@@ -1,9 +1,13 @@
 ﻿using Retrotracker.Domain;
 
-namespace Retrotracker.DataAccess
+namespace Retrotracker.DataAccess;
+public class RepositoryUsersPersistent : RepositoryPersistent<User>, IRepository<User>
 {
-    public class RepositoryUsersPersistent : RepositoryPersistent<User>, IRepository<User>
+    public RepositoryUsersPersistent() : base("usersStorage.json") { }
+
+    public override User? GetByID(string username)
     {
-        public RepositoryUsersPersistent(string jsonFileName) : base(jsonFileName) { }
+        var allUsers = GetAll();
+        return allUsers.FirstOrDefault(x => x.Username == username);
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\bin\Debug\net7.0\Retrotracker.Domain.deps.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\bin\Debug\net7.0\Retrotracker.Domain.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\bin\Debug\net7.0\Retrotracker.Domain.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.csproj.AssemblyReference.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.AssemblyInfoInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.AssemblyInfo.cs
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\refint\Retrotracker.Domain.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\Retrotracker.Domain.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\restotracker\Retrotracker.Domain\obj\Debug\net7.0\ref\Retrotracker.Domain.dll

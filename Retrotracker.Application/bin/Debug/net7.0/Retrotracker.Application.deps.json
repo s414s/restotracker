@@ -7,14 +7,41 @@
   "targets": {
     ".NETCoreApp,Version=v7.0": {
       "Retrotracker.Application/1.0.0": {
+        "dependencies": {
+          "Retrotracker.DataAccess": "1.0.0",
+          "Retrotracker.Domain": "1.0.0"
+        },
         "runtime": {
           "Retrotracker.Application.dll": {}
+        }
+      },
+      "Retrotracker.DataAccess/1.0.0": {
+        "dependencies": {
+          "Retrotracker.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Retrotracker.DataAccess.dll": {}
+        }
+      },
+      "Retrotracker.Domain/1.0.0": {
+        "runtime": {
+          "Retrotracker.Domain.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Retrotracker.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Retrotracker.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Retrotracker.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

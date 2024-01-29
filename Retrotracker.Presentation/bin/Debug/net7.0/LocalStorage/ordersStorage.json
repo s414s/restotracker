@@ -1,0 +1,22 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "state": "ordered",
+    "dishes": [
+      {
+        "Id": "1d8747cc-df0f-4ed9-a313-012345678901",
+        "Name": "Pizza",
+        "Price": 12.99,
+        "Ingredients": []
+      },
+      {
+        "Id": "2a3f69df-3f48-45cf-97f2-987654321098",
+        "Name": "Salad",
+        "Price": 6.99,
+        "Ingredients": []
+      }
+    ],
+    "date": "2023-12-26T19:34:28.743717+01:00",
+    "tableNumber": 1
+  }
+]

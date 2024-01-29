@@ -1,23 +1,33 @@
+using System.Text.Json.Serialization;
+
 namespace Retrotracker.Domain;
 public class User : IHasId
 {
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string Password { get; set; }
-    public DateTime LastLogin { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = new Guid().ToString();
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = string.Empty;
+    [JsonPropertyName("surname")]
+    public string Surname { get; set; } = string.Empty;
+    [JsonPropertyName("password")]
+    public string Password { get; set; } = string.Empty;
+    [JsonPropertyName("role")]
+    public string Role { get; set; } = "worker";
+    [JsonIgnore]
+    public string Username
+    {
+        get
+        {
+            return $"{Name.ToLower()}{Surname.ToLower()}";
+        }
+    }
 
     public User() { }
-
-    public User(string name, string password)
+    public User(string name, string surname, string password)
     {
         Id = new Guid().ToString();
         Name = name;
+        Surname = surname;
         Password = password;
     }
-
-    public override string ToString()
-    {
-        return $"User Id:{Id}, Name: {Name}, Last logged on: {LastLogin}";
-    }
-
 }
